@@ -65,16 +65,17 @@
             <div class="row product__filter">
                 <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                     <div class="product__item">
+
                         <div class="product__item__pic set-bg" data-setbg="user/img/product/product-1.jpg">
                             <span class="label">New</span>
                             <ul class="product__hover">
-                                <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-
+                                <li><a href="wishlist"><img src="user/img/icon/heart.png" alt=""></a></li>
+                                <li><a href="myCart"><img src="user/img/icon/cart.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
                             <h6>Piqué Biker Jacket</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
+                                    <a href="productDetails" class="add-cart ps-4">Buy Now</a>
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
@@ -99,15 +100,18 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
                     <div class="product__item">
+                        
                         <div class="product__item__pic set-bg" data-setbg="user/img/product/product-2.jpg">
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
 
-                            </ul>
-                        </div>
+                                <ul class="product__hover">
+                                    <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
+    
+                                </ul>
+             
+                            </div>
                         <div class="product__item__text">
                             <h6>Piqué Biker Jacket</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
+                                                        <a href="myCart" class="add-cart">+ Add To Cart</a>
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
@@ -141,7 +145,7 @@
                         </div>
                         <div class="product__item__text">
                             <h6>Multi-pocket Chest Bag</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
+                                                        <a href="myCart" class="add-cart">+ Add To Cart</a>
                             <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -174,7 +178,7 @@
                         </div>
                         <div class="product__item__text">
                             <h6>Diagonal Textured Cap</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
+                                                        <a href="myCart" class="add-cart">+ Add To Cart</a>
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
@@ -207,7 +211,7 @@
                         </div>
                         <div class="product__item__text">
                             <h6>Lether Backpack</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
+                                                        <a href="myCart" class="add-cart">+ Add To Cart</a>
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
@@ -241,7 +245,7 @@
                         </div>
                         <div class="product__item__text">
                             <h6>Ankle Boots</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
+                                                        <a href="myCart" class="add-cart">+ Add To Cart</a>
                             <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -274,7 +278,7 @@
                         </div>
                         <div class="product__item__text">
                             <h6>T-shirt Contrast Pocket</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
+                                                        <a href="myCart" class="add-cart">+ Add To Cart</a>
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
@@ -307,7 +311,7 @@
                         </div>
                         <div class="product__item__text">
                             <h6>Basic Flowing Scarf</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
+                                                        <a href="myCart" class="add-cart">+ Add To Cart</a>
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
