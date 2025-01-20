@@ -386,5 +386,4 @@
         </div>
     </section>
     <!-- Categories Section End -->
-
 @endsection
