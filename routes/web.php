@@ -12,6 +12,12 @@ Route::get('/shop',[HomeController::class,'shop']);
 Route::get('/productDetails',[HomeController::class,'productDetails']);
 Route::get('/checkout',[HomeController::class,'checkout']);
 Route::get('/myCart',[HomeController::class,'myCart']);
+Route::get('/login',[HomeController::class,'login'])->name('login');
+Route::get('/registration',[HomeController::class,'registration'])->name('registration');
+Route::get('/forgot-password',[HomeController::class,'forgot_password'])->name('forgot_password');
+Route::post('/registration',[HomeController::class,'registration_action'])->name('registration_action');
+Route::post('/login',[HomeController::class,'login_action'])->name('login_action');
+Route::post('/forgot-password',[HomeController::class,'forgot_password_action'])->name('forgot_password_action');
 
 // ADMIN
 Route::get('/admin/dashboard',[AdminController::class,'dashboard']);
