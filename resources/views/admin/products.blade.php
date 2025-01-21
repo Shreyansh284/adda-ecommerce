@@ -1,19 +1,15 @@
 @extends('admin.master')
 @section('content')
 <div class="pagetitle">
-    <h1>Data Tables</h1>
+    <h1>Products Table</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Tables</li>
-        <li class="breadcrumb-item active">Data</li>
+        <li class="breadcrumb-item"><a href="{{ URL::to('/') }}/admin/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active"><a href="{{ URL::to('/') }}/admin/products">Product</a></li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
 
-
-{{--TODO:  MORE Detail IN MODAL  QUANTITY  DETAIL ADDTIONAL INFO.. --}}
- 
 
 <section class="section">
     <div class="row">
@@ -24,7 +20,7 @@
             <h5 class="card-title">Product</h5>
             <div class="d-flex justify-content-end">
 
-                <button class="btn btn-primary ">+ Add Product</button>
+                <a class="btn btn-primary " href="{{ URL::to('/') }}/admin/product/add" >+ Add Product</a>
             </div>
             <!-- Table with stripped rows -->
             <table class="table datatable">
@@ -50,9 +46,9 @@
                   <td ><span class="badge text-bg-success">Active</span></td>
                   <td>
                     <div>
-                        <i class="ri-eye-fill text-primary"></i>
+                        <i class="ri-eye-fill text-primary" data-bs-toggle="modal" data-bs-target="#productDetailModal" ></i>
                         <i class="ri-edit-box-fill text-warning"></i>
-                        <i class="ri-delete-bin-6-fill text-danger"></i>
+                        <i class="ri-delete-bin-6-fill text-danger" data-bs-toggle="modal" data-bs-target="#deleteProductConfirm" ></i>
                     </div>
                   </td>
                 </tr>
@@ -67,5 +63,8 @@
       </div>
     </div>
   </section>
+
+  @include('admin.modal.productDetailModal')
+  @include('admin.modal.deleteProductConfirmModal')
 
 @endsection

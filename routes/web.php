@@ -24,3 +24,4 @@ Route::get('/admin/dashboard',[AdminController::class,'dashboard']);
 Route::get('/admin/products',[AdminController::class,'products']);
 Route::get('/admin/users',[AdminController::class,'users']);
 Route::get('/admin/orders',[AdminController::class,'orders']);
+Route::get('/admin/product/add',[AdminController::class,'addProduct']);

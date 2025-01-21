@@ -23,5 +23,9 @@ class AdminController extends Controller
     {
         return view('admin.orders');
     }
+    public function addProduct()
+    {
+        return view ('admin.addProductForm');
+    }
 }
 
