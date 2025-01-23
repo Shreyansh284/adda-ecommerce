@@ -12,6 +12,7 @@ Route::get('/shop',[HomeController::class,'shop']);
 Route::get('/productDetails',[HomeController::class,'productDetails']);
 Route::get('/checkout',[HomeController::class,'checkout']);
 Route::get('/myCart',[HomeController::class,'myCart']);
+Route::get('/wishlist',[HomeController::class,'wishlist']);
 Route::get('/login',[HomeController::class,'login'])->name('login');
 Route::get('/registration',[HomeController::class,'registration'])->name('registration');
 Route::get('/forgot-password',[HomeController::class,'forgot_password'])->name('forgot_password');

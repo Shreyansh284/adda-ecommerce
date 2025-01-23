@@ -1,651 +1,511 @@
 @extends('user.master')
 @section('content')
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <h4>Shop</h4>
-                        <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
-                            <span>Shop</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
+<div class="u-s-p-y-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shop-p">
+                    <div class="shop-p__toolbar u-s-m-b-30">
+                     
+                        <div class="shop-p__tool-style">
+                            <div class="tool-style__group u-s-m-b-8">
 
-    <!-- Shop Section Begin -->
-    <section class="shop spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="shop__sidebar">
-                        <div class="shop__sidebar__search">
-                            <form action="#">
-                                <input type="text" placeholder="Search...">
-                                <button type="submit"><span class="icon_search"></span></button>
+                                <span class="js-shop-filter-target" data-side="#side-filter">Filters</span>
+
+                                <span class="js-shop-grid-target is-active">Grid</span>
+
+                                <span class="js-shop-list-target">List</span></div>
+                            <form>
+                                <div class="tool-style__form-wrap">
+                                    <div class="u-s-m-b-8"><select class="select-box select-box--transparent-b-2">
+                                            <option>Show: 8</option>
+                                            <option selected>Show: 12</option>
+                                            <option>Show: 16</option>
+                                            <option>Show: 28</option>
+                                        </select></div>
+                                    <div class="u-s-m-b-8"><select class="select-box select-box--transparent-b-2">
+                                            <option selected>Sort By: Newest Items</option>
+                                            <option>Sort By: Latest Items</option>
+                                            <option>Sort By: Best Selling</option>
+                                            <option>Sort By: Best Rating</option>
+                                            <option>Sort By: Lowest Price</option>
+                                            <option>Sort By: Highest Price</option>
+                                        </select></div>
+                                </div>
                             </form>
                         </div>
-                        <div class="shop__sidebar__accordion">
-                            <div class="accordion" id="accordionExample">
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
+                    </div>
+                    <div class="shop-p__collection">
+                        <div class="row is-grid-active">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                            <img class="aspect__img" src="images/product/men/product6.jpg" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</a></div>
                                     </div>
-                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__categories">
-                                                <ul class="nice-scroll">
-                                                    <li><a href="#">Men (20)</a></li>
-                                                    <li><a href="#">Women (20)</a></li>
-                                                    <li><a href="#">Bags (20)</a></li>
-                                                    <li><a href="#">Clothing (20)</a></li>
-                                                    <li><a href="#">Shoes (20)</a></li>
-                                                    <li><a href="#">Accessories (20)</a></li>
-                                                    <li><a href="#">Kids (20)</a></li>
-                                                    <li><a href="#">Kids (20)</a></li>
-                                                    <li><a href="#">Kids (20)</a></li>
-                                                </ul>
-                                            </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                            <a href="shop-side-version-2.html">Men Clothing</a></div>
+                                        <div class="product-m__name">
+
+                                            <a href="product-detail.html">New Fashion B Nice Elegant</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                            <span class="product-m__review">(23)</span></div>
+                                        <div class="product-m__price">$125.00</div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                            <img class="aspect__img" src="images/product/women/product5.jpg" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</a></div>
                                     </div>
-                                    <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__brand">
-                                                <ul>
-                                                    <li><a href="#">Louis Vuitton</a></li>
-                                                    <li><a href="#">Chanel</a></li>
-                                                    <li><a href="#">Hermes</a></li>
-                                                    <li><a href="#">Gucci</a></li>
-                                                </ul>
-                                            </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                            <a href="shop-side-version-2.html">Women Clothing</a></div>
+                                        <div class="product-m__name">
+
+                                            <a href="product-detail.html">New Dress A Nice Elegant</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                            <span class="product-m__review">(23)</span></div>
+                                        <div class="product-m__price">$125.00</div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                            <img class="aspect__img" src="images/product/women/product6.jpg" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</a></div>
                                     </div>
-                                    <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__price">
-                                                <ul>
-                                                    <li><a href="#">$0.00 - $50.00</a></li>
-                                                    <li><a href="#">$50.00 - $100.00</a></li>
-                                                    <li><a href="#">$100.00 - $150.00</a></li>
-                                                    <li><a href="#">$150.00 - $200.00</a></li>
-                                                    <li><a href="#">$200.00 - $250.00</a></li>
-                                                    <li><a href="#">250.00+</a></li>
-                                                </ul>
-                                            </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                            <a href="shop-side-version-2.html">Women Clothing</a></div>
+                                        <div class="product-m__name">
+
+                                            <a href="product-detail.html">New Dress B Nice Elegant</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                            <span class="product-m__review">(23)</span></div>
+                                        <div class="product-m__price">$125.00</div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseFour">Size</a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                            <img class="aspect__img" src="images/product/women/product7.jpg" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</a></div>
                                     </div>
-                                    <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__size">
-                                                <label for="xs">xs
-                                                    <input type="radio" id="xs">
-                                                </label>
-                                                <label for="sm">s
-                                                    <input type="radio" id="sm">
-                                                </label>
-                                                <label for="md">m
-                                                    <input type="radio" id="md">
-                                                </label>
-                                                <label for="xl">xl
-                                                    <input type="radio" id="xl">
-                                                </label>
-                                                <label for="2xl">2xl
-                                                    <input type="radio" id="2xl">
-                                                </label>
-                                                <label for="xxl">xxl
-                                                    <input type="radio" id="xxl">
-                                                </label>
-                                                <label for="3xl">3xl
-                                                    <input type="radio" id="3xl">
-                                                </label>
-                                                <label for="4xl">4xl
-                                                    <input type="radio" id="4xl">
-                                                </label>
-                                            </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                            <a href="shop-side-version-2.html">Women Clothing</a></div>
+                                        <div class="product-m__name">
+
+                                            <a href="product-detail.html">New Dress C Nice Elegant</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                            <span class="product-m__review">(23)</span></div>
+                                        <div class="product-m__price">$125.00</div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseFive">Colors</a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                            <img class="aspect__img" src="images/product/men/product9.jpg" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</a></div>
                                     </div>
-                                    <div id="collapseFive" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__color">
-                                                <label class="c-1" for="sp-1">
-                                                    <input type="radio" id="sp-1">
-                                                </label>
-                                                <label class="c-2" for="sp-2">
-                                                    <input type="radio" id="sp-2">
-                                                </label>
-                                                <label class="c-3" for="sp-3">
-                                                    <input type="radio" id="sp-3">
-                                                </label>
-                                                <label class="c-4" for="sp-4">
-                                                    <input type="radio" id="sp-4">
-                                                </label>
-                                                <label class="c-5" for="sp-5">
-                                                    <input type="radio" id="sp-5">
-                                                </label>
-                                                <label class="c-6" for="sp-6">
-                                                    <input type="radio" id="sp-6">
-                                                </label>
-                                                <label class="c-7" for="sp-7">
-                                                    <input type="radio" id="sp-7">
-                                                </label>
-                                                <label class="c-8" for="sp-8">
-                                                    <input type="radio" id="sp-8">
-                                                </label>
-                                                <label class="c-9" for="sp-9">
-                                                    <input type="radio" id="sp-9">
-                                                </label>
-                                            </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                            <a href="shop-side-version-2.html">Men Clothing</a></div>
+                                        <div class="product-m__name">
+
+                                            <a href="product-detail.html">New Fashion E Nice Elegant</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                            <span class="product-m__review">(23)</span></div>
+                                        <div class="product-m__price">$125.00</div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseSix">Tags</a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                            <img class="aspect__img" src="images/product/men/product10.jpg" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</a></div>
                                     </div>
-                                    <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__tags">
-                                                <a href="#">Product</a>
-                                                <a href="#">Bags</a>
-                                                <a href="#">Shoes</a>
-                                                <a href="#">Fashio</a>
-                                                <a href="#">Clothing</a>
-                                                <a href="#">Hats</a>
-                                                <a href="#">Accessories</a>
-                                            </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                            <a href="shop-side-version-2.html">Men Clothing</a></div>
+                                        <div class="product-m__name">
+
+                                            <a href="product-detail.html">New Fashion F Nice Elegant</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                            <span class="product-m__review">(23)</span></div>
+                                        <div class="product-m__price">$125.00</div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                            <img class="aspect__img" src="images/product/electronic/product2.jpg" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</a></div>
+                                    </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                            <a href="shop-side-version-2.html">Electronics</a></div>
+                                        <div class="product-m__name">
+
+                                            <a href="product-detail.html">Red Wireless Headphone</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                            <span class="product-m__review">(23)</span></div>
+                                        <div class="product-m__price">$125.00</div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                            <img class="aspect__img" src="images/product/electronic/product3.jpg" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</a></div>
+                                    </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                            <a href="shop-side-version-2.html">Electronics</a></div>
+                                        <div class="product-m__name">
+
+                                            <a href="product-detail.html">Yellow Wireless Headphone</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                            <span class="product-m__review">(23)</span></div>
+                                        <div class="product-m__price">$125.00
+
+                                            <span class="product-m__discount">$22.00</span></div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                            <img class="aspect__img" src="images/product/electronic/product4.jpg" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</a></div>
+                                    </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                            <a href="shop-side-version-2.html">Electronics</a></div>
+                                        <div class="product-m__name">
+
+                                            <a href="product-detail.html">Hover Skateboard Scooter</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                            <span class="product-m__review">(23)</span></div>
+                                        <div class="product-m__price">$125.00
+
+                                            <span class="product-m__discount">$22.00</span></div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                            <img class="aspect__img" src="images/product/electronic/product5.jpg" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</a></div>
+                                    </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                            <a href="shop-side-version-2.html">Electronics</a></div>
+                                        <div class="product-m__name">
+
+                                            <a href="product-detail.html">Hover Red Skateboard Scooter</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                            <span class="product-m__review">(23)</span></div>
+                                        <div class="product-m__price">$125.00
+
+                                            <span class="product-m__discount">$22.00</span></div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                            <img class="aspect__img" src="images/product/electronic/product6.jpg" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</a></div>
+                                    </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                            <a href="shop-side-version-2.html">Electronics</a></div>
+                                        <div class="product-m__name">
+
+                                            <a href="product-detail.html">Canon DSLR Camera 4k</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                            <span class="product-m__review">(23)</span></div>
+                                        <div class="product-m__price">$125.00
+
+                                            <span class="product-m__discount">$22.00</span></div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                            <img class="aspect__img" src="images/product/electronic/product7.jpg" alt=""></a>
+                                        <div class="product-m__quick-look">
+
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Add to Cart</a></div>
+                                    </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+
+                                            <a href="shop-side-version-2.html">Electronics</a></div>
+                                        <div class="product-m__name">
+
+                                            <a href="product-detail.html">Nikon DSLR Camera 4k</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                            <span class="product-m__review">(23)</span></div>
+                                        <div class="product-m__price">$125.00
+
+                                            <span class="product-m__discount">$22.00</span></div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="shop__product__option">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="shop__product__option__left">
-                                    <p>Showing 1–12 of 126 results</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="shop__product__option__right">
-                                    <p>Sort by Price:</p>
-                                    <select>
-                                        <option value="">Low To High</option>
-                                        <option value="">$0 - $55</option>
-                                        <option value="">$55 - $100</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="user/img/product/product-2.jpg">
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="user/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="user/img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>Piqué Biker Jacket</h6>
-                                    <a href="myCart" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$67.24</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-4">
-                                            <input type="radio" id="pc-4">
-                                        </label>
-                                        <label class="active black" for="pc-5">
-                                            <input type="radio" id="pc-5">
-                                        </label>
-                                        <label class="grey" for="pc-6">
-                                            <input type="radio" id="pc-6">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item sale">
-                                <div class="product__item__pic set-bg" data-setbg="user/img/product/product-3.jpg">
-                                    <span class="label">Sale</span>
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="user/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="user/img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>Multi-pocket Chest Bag</h6>
-                                    <a href="myCart" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$43.48</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-7">
-                                            <input type="radio" id="pc-7">
-                                        </label>
-                                        <label class="active black" for="pc-8">
-                                            <input type="radio" id="pc-8">
-                                        </label>
-                                        <label class="grey" for="pc-9">
-                                            <input type="radio" id="pc-9">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="user/img/product/product-4.jpg">
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="user/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="user/img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>Diagonal Textured Cap</h6>
-                                    <a href="myCart" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$60.9</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-10">
-                                            <input type="radio" id="pc-10">
-                                        </label>
-                                        <label class="active black" for="pc-11">
-                                            <input type="radio" id="pc-11">
-                                        </label>
-                                        <label class="grey" for="pc-12">
-                                            <input type="radio" id="pc-12">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item sale">
-                                <div class="product__item__pic set-bg" data-setbg="user/img/product/product-6.jpg">
-                                    <span class="label">Sale</span>
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="user/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="user/img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>Ankle Boots</h6>
-                                    <a href="myCart" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$98.49</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-16">
-                                            <input type="radio" id="pc-16">
-                                        </label>
-                                        <label class="active black" for="pc-17">
-                                            <input type="radio" id="pc-17">
-                                        </label>
-                                        <label class="grey" for="pc-18">
-                                            <input type="radio" id="pc-18">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="user/img/product/product-7.jpg">
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="user/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="user/img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>T-shirt Contrast Pocket</h6>
-                                    <a href="myCart" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$49.66</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-19">
-                                            <input type="radio" id="pc-19">
-                                        </label>
-                                        <label class="active black" for="pc-20">
-                                            <input type="radio" id="pc-20">
-                                        </label>
-                                        <label class="grey" for="pc-21">
-                                            <input type="radio" id="pc-21">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="user/img/product/product-8.jpg">
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="user/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="user/img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>Basic Flowing Scarf</h6>
-                                    <a href="myCart" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$26.28</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-22">
-                                            <input type="radio" id="pc-22">
-                                        </label>
-                                        <label class="active black" for="pc-23">
-                                            <input type="radio" id="pc-23">
-                                        </label>
-                                        <label class="grey" for="pc-24">
-                                            <input type="radio" id="pc-24">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="user/img/product/product-9.jpg">
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="user/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="user/img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>Piqué Biker Jacket</h6>
-                                    <a href="myCart" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$67.24</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-25">
-                                            <input type="radio" id="pc-25">
-                                        </label>
-                                        <label class="active black" for="pc-26">
-                                            <input type="radio" id="pc-26">
-                                        </label>
-                                        <label class="grey" for="pc-27">
-                                            <input type="radio" id="pc-27">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item sale">
-                                <div class="product__item__pic set-bg" data-setbg="user/img/product/product-10.jpg">
-                                    <span class="label">Sale</span>
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="user/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="user/img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>Multi-pocket Chest Bag</h6>
-                                    <a href="myCart" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$43.48</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-28">
-                                            <input type="radio" id="pc-28">
-                                        </label>
-                                        <label class="active black" for="pc-29">
-                                            <input type="radio" id="pc-29">
-                                        </label>
-                                        <label class="grey" for="pc-30">
-                                            <input type="radio" id="pc-30">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="user/img/product/product-11.jpg">
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="user/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="user/img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>Diagonal Textured Cap</h6>
-                                    <a href="myCart" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$60.9</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-31">
-                                            <input type="radio" id="pc-31">
-                                        </label>
-                                        <label class="active black" for="pc-32">
-                                            <input type="radio" id="pc-32">
-                                        </label>
-                                        <label class="grey" for="pc-33">
-                                            <input type="radio" id="pc-33">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item sale">
-                                <div class="product__item__pic set-bg" data-setbg="user/img/product/product-12.jpg">
-                                    <span class="label">Sale</span>
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="user/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="user/img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>Ankle Boots</h6>
-                                    <a href="myCart" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$98.49</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-34">
-                                            <input type="radio" id="pc-34">
-                                        </label>
-                                        <label class="active black" for="pc-35">
-                                            <input type="radio" id="pc-35">
-                                        </label>
-                                        <label class="grey" for="pc-36">
-                                            <input type="radio" id="pc-36">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="user/img/product/product-13.jpg">
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="user/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="user/img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>T-shirt Contrast Pocket</h6>
-                                    <a href="myCart" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$49.66</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-37">
-                                            <input type="radio" id="pc-37">
-                                        </label>
-                                        <label class="active black" for="pc-38">
-                                            <input type="radio" id="pc-38">
-                                        </label>
-                                        <label class="grey" for="pc-39">
-                                            <input type="radio" id="pc-39">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="user/img/product/product-14.jpg">
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="user/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="user/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="user/img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>Basic Flowing Scarf</h6>
-                                    <a href="myCart" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$26.28</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-40">
-                                            <input type="radio" id="pc-40">
-                                        </label>
-                                        <label class="active black" for="pc-41">
-                                            <input type="radio" id="pc-41">
-                                        </label>
-                                        <label class="grey" for="pc-42">
-                                            <input type="radio" id="pc-42">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="product__pagination">
-                                <a class="active" href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <span>...</span>
-                                <a href="#">21</a>
-                            </div>
-                        </div>
+                    <div class="u-s-p-y-60">
+
+                        <!--====== Pagination ======-->
+                        <ul class="shop-p__pagination">
+                            <li class="is-active">
+
+                                <a href="shop-grid-full.html">1</a></li>
+                            <li>
+
+                                <a href="shop-grid-full.html">2</a></li>
+                            <li>
+
+                                <a href="shop-grid-full.html">3</a></li>
+                            <li>
+
+                                <a href="shop-grid-full.html">4</a></li>
+                            <li>
+
+                                <a class="fas fa-angle-right" href="shop-grid-full.html"></a></li>
+                        </ul>
+                        <!--====== End - Pagination ======-->
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Shop Section End -->
-
+    </div>
+</div>
 @endsection

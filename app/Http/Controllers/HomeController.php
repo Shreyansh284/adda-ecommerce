@@ -40,6 +40,11 @@ class HomeController extends Controller
     {
         return view('user.checkout');
     }
+
+    public function wishlist()
+    {
+        return view('user.wishlist');
+    }
     public function login()
     {
         return view('user.login');
