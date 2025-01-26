@@ -1,7 +1,17 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\ColorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RatingController;
+use App\Http\Controllers\SizeController;
+use App\Http\Controllers\StateController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 // HOME
@@ -22,7 +32,15 @@ Route::post('/forgot-password',[HomeController::class,'forgot_password_action'])
 
 // ADMIN
 Route::get('/admin/dashboard',[AdminController::class,'dashboard']);
-Route::get('/admin/products',[AdminController::class,'products']);
+Route::get('/admin/products',[ProductController::class,'index']);
 Route::get('/admin/users',[AdminController::class,'users']);
-Route::get('/admin/orders',[AdminController::class,'orders']);
-Route::get('/admin/product/add',[AdminController::class,'addProduct']);
+Route::get('/admin/orders',[OrderController::class,'index']);
+Route::get('/admin/categories',[CategoryController::class,'index']);
+Route::get('/admin/subCategories',[SubCategoryController::class,'index']);
+Route::get('/admin/ratings',[RatingController::class,'index']);
+Route::get('/admin/sizes',[SizeController::class,'index']);
+Route::get('/admin/colors',[ ColorController::class,'index']);
+Route::get('/admin/cities',[CityController::class,'index']);
+Route::get('/admin/states',[StateController::class,'index']);
+Route::get('/admin/payments',[PaymentController::class,'index']);
+Route::get('/admin/product/add',[ProductController::class,'create']);

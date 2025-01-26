@@ -11,6 +11,8 @@
   </div><!-- End Page Title -->
 
 
+
+
 <section class="section">
     <div class="row">
       <div class="col-lg-12">
@@ -19,12 +21,11 @@
           <div class="card-body">
             <h5 class="card-title">Product</h5>
             <div class="d-flex justify-content-end">
-
                 <a class="btn btn-primary " href="{{ URL::to('/') }}/admin/product/add" >+ Add Product</a>
             </div>
             <!-- Table with stripped rows -->
             <table class="table datatable">
-              <thead>
+              <thead> 
                 <tr>
                     <th>Product ID</th>
                   <th>
@@ -64,7 +65,7 @@
     </div>
   </section>
 
-  @include('admin.modal.productDetailModal')
-  @include('admin.modal.deleteProductConfirmModal')
+  @include('admin.product.modal.productDetailModal')
+  @include('admin.product.modal.deleteProductConfirmModal')
 
 @endsection

@@ -13,6 +13,7 @@ class RatingController extends Controller
     public function index()
     {
         //
+    return view ('admin.rating.ratings');
     }
 
     /**

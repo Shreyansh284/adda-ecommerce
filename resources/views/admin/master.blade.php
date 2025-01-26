@@ -115,15 +115,71 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ URL::to('/') }}/admin/products">
-            <i class="ri-stack-line"></i>
-          <span>Products</span>
+        <a class="nav-link collapsed" data-bs-target="#product-nav" data-bs-toggle="collapse" href="#">
+          <i class="ri-terminal-window-line"></i><span>Products</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
+        <ul id="product-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ URL::to('/') }}/admin/products">
+              <i class="bi bi-circle"></i><span>Products</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ URL::to('/') }}/admin/categories">
+              <i class="bi bi-circle"></i><span>Categories</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ URL::to('/') }}/admin/subCategories">
+              <i class="bi bi-circle"></i><span>Sub Categories</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ URL::to('/') }}/admin/sizes">
+              <i class="bi bi-circle"></i><span>Sizes</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ URL::to('/') }}/admin/colors">
+              <i class="bi bi-circle"></i><span>Colors</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#place-nav" data-bs-toggle="collapse" href="#">
+          <i class="ri-road-map-line"></i><span>Place</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="place-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ URL::to('/') }}/admin/states">
+              <i class="bi bi-circle"></i><span>State</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ URL::to('/') }}/admin/cities">
+              <i class="bi bi-circle"></i><span>City</span>
+            </a>
+          </li>
+        </ul>
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ URL::to('/') }}/admin/orders">
             <i class="ri-shopping-cart-2-line"></i>
           <span>Orders</span></span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ URL::to('/') }}/admin/payments">
+          <i class="ri-bank-card-line"></i>
+          <span>Payments</span></span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ URL::to('/') }}/admin/ratings">
+          <i class="ri-feedback-line"></i>
+          <span>Ratings</span></span>
         </a>
       </li>
     </ul>

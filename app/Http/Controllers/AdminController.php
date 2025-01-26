@@ -11,21 +11,18 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
-    public function products()
-    {
-        return view('admin.products');
-    }
+    // public function products()
+    // {
+    //     return view('admin.products');
+    // }
     public function users()
     {
-        return view('admin.users');
+        return view('admin.user.users');
     }
     public function orders()
     {
-        return view('admin.orders');
+        return view('admin.order.orders');
     }
-    public function addProduct()
-    {
-        return view ('admin.addProductForm');
-    }
+
 }
 
