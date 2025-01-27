@@ -21,6 +21,7 @@ return new class extends Migration
             );
             $table->string('size');
             $table->bigInteger('quantity');
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }

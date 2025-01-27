@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('stateId')->constrained(
                 table: 'states', indexName: 'stateIdForCity'
             );
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }

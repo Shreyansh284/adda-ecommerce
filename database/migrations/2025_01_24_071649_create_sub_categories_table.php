@@ -17,6 +17,7 @@ return new class extends Migration
                 table: 'categories', indexName: 'categoryIdForSubCategory'
             )->onDelete('cascade');
             $table->string('subCategoryName');
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
