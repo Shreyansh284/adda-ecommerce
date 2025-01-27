@@ -23,30 +23,40 @@
           <div class="card-body">
             <h5 class="card-title">Category</h5>
             <div class="d-flex justify-content-end">
-
-                <button class="btn btn-primary ">+ Add Category</button>
+              <a class="btn btn-primary " href="{{ URL::to('/') }}/admin/category/add" >+ Add Category</a>
             </div>
+         
             <!-- Table with stripped rows -->
             <table class="table datatable">
               <thead>
                 <tr>
                     <th>Category ID</th>
                     <th>Category Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
 
                 </tr>
               </thead>
               <tbody>
+                @foreach ($categories as $category )
                 <tr>
-                  <td>CU121235</td>
-                  <td>Male</td>
-                  {{-- <td ><span class="badge text-bg-success">Active</span></td> --}}
+                  <td>{{$category->id}}</td>
+                  <td>{{$category->categoryName}}</td>
+                  <td ><div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" 
+                    {{($category->status=='active')? 'checked' :''}}>
+                  </div></td>
                   <td>
                     <div>
-                        <i class="ri-edit-box-fill text-warning"></i>
+                        <a href="{{ URL::to('/') }}/admin/category/edit/{{$category->id}}">
+                          <i class="ri-edit-box-fill text-warning"></i>
+                        </a>
                         <i class="ri-delete-bin-6-fill text-danger"></i>
                     </div>
                   </td>
                 </tr>
+                @endforeach
+               
               </tbody>
             </table>
             <!-- End Table with stripped rows -->

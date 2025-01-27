@@ -13,7 +13,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        return view('admin.product.category');
+        $categories=Category::all();
+        return view('admin.product.category',compact('categories'));
     }
 
     /**
@@ -22,6 +23,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view('admin.product.addItemPages.addCategoryForm');
     }
 
     /**
@@ -29,7 +31,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'categoryName' => 'required|unique:categories,categoryName',
+        ]);
+        $category = new Category();
+        $category->categoryName=$request->categoryName;
+        $saved=$category->save();
+        if($saved)
+        {
+            return redirect('/admin/categories');
+        }
     }
 
     /**
@@ -43,9 +55,12 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($category)
     {
         //
+        // dd($category);
+        $getCategoryById=Category::where('id',$category)->first();
+        return view('admin.product.editItemPages.editCategoryForm',compact('getCategoryById'));
     }
 
     /**

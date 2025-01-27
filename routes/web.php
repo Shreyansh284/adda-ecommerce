@@ -44,3 +44,9 @@ Route::get('/admin/cities',[CityController::class,'index']);
 Route::get('/admin/states',[StateController::class,'index']);
 Route::get('/admin/payments',[PaymentController::class,'index']);
 Route::get('/admin/product/add',[ProductController::class,'create']);
+
+
+Route::get('/admin/category/add',[CategoryController::class,'create']);
+Route::post('/admin/category/add',[CategoryController::class,'store'])->name('store-category');
+Route::get('/admin/category/edit/{id}',[CategoryController::class,'edit']);
+Route::post('/admin/category/update',[CategoryController::class,'update'])->name('update-category');
