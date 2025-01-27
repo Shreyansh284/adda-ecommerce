@@ -84,10 +84,7 @@
                                     <div class="col-md-5">
                                         <input type="number" name="stocks[]" class="form-control" placeholder="Stock (e.g., 10)" required>
                                     </div>
-                                    <div class="col-md-2 text-end">
-                                        <i class="ri-delete-bin-6-fill text-danger remove-size-field"></i>
-                                        {{-- <button type="button" class="btn btn-danger btn-sm remove-size-field">Remove</button> --}}
-                                    </div>
+
                                 </div>
                             </div>
                             <button type="button" class="btn btn-secondary btn-sm mt-2" id="addSizeField">Add More Sizes</button>
@@ -95,19 +92,20 @@
                         <div class="mb-3">
                             <label class="form-label">Colors </label>
                             <div id="colorFieldsContainer">
-                                <div class="d-flex justify-content-between row g-2 align-items-center mb-2">
-                                    <div class="col-md-5">
-                                        <input type="text" name="colorname[]" class="form-control" placeholder="Color Name (e.g., Red)" required>
+                                <div class="d-flex row g-6 align-items-center mb-2">
+                                    <div class="col-md-5 row">
+                                        <div class="col-md-8">
+                                            <input type="text" name="colorname[]" class="form-control" placeholder="Color Name (e.g., Red)" required>
+                                        </div>
+                                        <div class="col">
+                                            <input type="color" name="hexcode[]" class="form-control" placeholder="Select HexCode (e.g.,#ffffff )" required>
+                                        </div>
                                     </div>
                                     
-                                    <div class="col-md-2">
+                                    {{-- <div class="col-md-2">
                                         
-                                        <input type="color" name="hexcode[]" class="form-control" placeholder="Select HexCode (e.g.,#ffffff )" required>
-                                    </div>
-                                    <div class="col-md-2 text-end">
-                                        <i class="ri-delete-bin-6-fill text-danger remove-color-field""></i>
-                                        {{-- <button type="button" class="btn btn-danger btn-sm remove-color-field">Remove</button> --}}
-                                    </div>
+                                    </div> --}}
+
                                 </div>
                             </div>
                             <button type="button" class="btn btn-secondary btn-sm mt-2" id="addColorField">Add More Colors</button>
@@ -119,10 +117,7 @@
                                     <div class="col-md-5">
                                         <input type="file" name="images[]" class="form-control" required>
                                     </div>
-                                   <div class="col-md-2 text-end">
-                                        <i class="ri-delete-bin-6-fill text-danger remove-image-field"></i>
-                                        {{-- <button type="button" class="btn btn-danger btn-sm remove-image-field">Remove</button> --}}
-                                    </div>
+
                                 </div>
                             </div>
                             {{-- <i class="ri-add-large-line" id="addImageField"></i> --}}
@@ -189,17 +184,19 @@
     });
     addColorField.addEventListener('click', () => {
         const colorFieldHTML = `
-            <div class=" d-flex justify-content-between row g-2 align-items-center mb-2">
-                <div class="col-md-5">
-                    <input type="text" name="colorname[]" class="form-control" placeholder="Color Name (e.g., Red)" required>
+            <div class="d-flex row justify-content-between g-6 align-items-center mb-2">
+                    <div class="col-md-5 row">
+                        <div class="col-md-8">
+                            <input type="text" name="colorname[]" class="form-control" placeholder="Color Name (e.g., Red)" required>
+                        </div>
+                        <div class="col">
+                            <input type="color" name="hexcode[]" class="form-control" placeholder="Select HexCode (e.g.,#ffffff )" required>
+                        </div>
+                    </div>
+                    <div class="col-md-2 text-end">
+                        <i class="ri-delete-bin-6-fill text-danger remove-color-field"></i>
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <input type="color" name="hexcode[]" class="form-control" placeholder="Select HexCode (e.g.,#ffffff )" required>
-                </div>
-                <div class="col-md-2 text-end">
-                    <i class="ri-delete-bin-6-fill text-danger remove-color-field"></i>
-                </div>
-            </div>
         `;
         colorFieldsContainer.insertAdjacentHTML('beforeend', colorFieldHTML);
     });

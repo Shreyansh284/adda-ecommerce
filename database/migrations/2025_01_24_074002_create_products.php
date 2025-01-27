@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('productName');
             $table->string('description');
-            $table->double('price',);
-            $table->double('discount',);
-            $table->string('material',);
-            $table->string('additionalInfo');
+            $table->double('price');
+            $table->double('discount')->nullable();
+            $table->string('material')->nullable();
+            $table->string('additionalInfo')->nullable();
             $table->foreignId('categoryId')->constrained(
                 table: 'categories', indexName: 'categoryIdForProduct'
             )->onDelete('cascade');
