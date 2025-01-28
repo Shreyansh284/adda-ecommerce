@@ -57,7 +57,7 @@
                                     <select name="categoryId" id="productCategory" class="form-select" required>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">
-                                                {{ $category->catagoryName }}
+                                                {{ $category->categoryName }}
                                             </option>
                                         @endforeach
                                     </select>

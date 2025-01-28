@@ -22,10 +22,10 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Rating</h5>
-            <div class="d-flex justify-content-end">
+            {{-- <div class="d-flex justify-content-end">
 
                 <button class="btn btn-primary ">+ Add Rating</button>
-            </div>
+            </div> --}}
             <!-- Table with stripped rows -->
             <table class="table datatable">
               <thead>
