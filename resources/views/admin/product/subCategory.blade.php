@@ -24,7 +24,7 @@
             <h5 class="card-title">Sub Catagory</h5>
             <div class="d-flex justify-content-end">
 
-                <button class="btn btn-primary ">+ Add Sub Category</button>
+              <a class="btn btn-primary " href="{{ URL::to('/') }}/admin/subCategory/add" >+ Add Sub Catagory</a>
             </div>
             <!-- Table with stripped rows -->
             <table class="table datatable">
@@ -33,22 +33,36 @@
                     <th>Sub Category ID</th>
                     <th>Sub Category Name</th>
                     <th>Category Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
 
                 </tr>
               </thead>
               <tbody>
+                @foreach ($subcategories as $subcategory )
                 <tr>
-                  <td>SCU121235</td>
-                  <td>Kurti</td>
-                  <td>Female</td>
-                  {{-- <td ><span class="badge text-bg-success">Active</span></td> --}}
+                    
+                  <td>{{$subcategory->id}}</td>
+                  <td>{{$subcategory->subCategoryName}}</td>
+                  <td>{{$subcategory->categoryName}}</td>
+                  <td>@if ($subcategory->status=='active')
+                    <a href="{{ URL::to('/') }}/admin/subCategory/status/{{$subcategory->id}}"><span class="badge text-bg-success">Active</span></a>    
+                    @elseif($subcategory->status=='inactive')   
+                    <a href="{{ URL::to('/') }}/admin/subCategory/status/{{$subcategory->id}}"><span class="badge text-bg-warning">Inactive</span></a>                    
+                    @endif</td>  
                   <td>
                     <div>
+                      <a href="{{ URL::to('/') }}/admin/subCategory/edit/{{$subcategory->id}}">
                         <i class="ri-edit-box-fill text-warning"></i>
+                      </a>
+                      <a href="{{ URL::to('/') }}/admin/subCategory/delete/{{$subcategory->id}}">
                         <i class="ri-delete-bin-6-fill text-danger"></i>
+                      </a>
                     </div>
                   </td>
+                  
                 </tr>
+                @endforeach
               </tbody>
             </table>
             <!-- End Table with stripped rows -->

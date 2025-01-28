@@ -15,20 +15,25 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title text-center mb-4">Edit Category</h4>
-                    <form action="{{route ('update-category')}}" method="POST" enctype="multipart/form-data">
+
+
+                    <form action="{{route ('update-category',$category->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 col-5">
                             <label for="categoryName" class="form-label">Category Name</label>
-                            <input type="text" name="categoryName" id="categoryName" class="form-control" value="{{$getCategoryById->categoryName}}" placeholder="Enter category name" >
+                            <input type="text" name="categoryName" id="categoryName" class="form-control" value="{{$category->categoryName}}" placeholder="Enter category name" >
                             <span class="text-danger">
                                 @error('categoryName')
                                     {{ $message }}
                                 @enderror
                             </span>       
                         </div>
+
                         <!-- Submit Button -->
                         <div class="col-12 d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary">+ Edit Category </button>
+
+                            <a class="btn btn-secondary me-2" href="{{ URL::to('/') }}/admin/categories/">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Edit Category </button>
                         </div>
                     </form>
                 </div>

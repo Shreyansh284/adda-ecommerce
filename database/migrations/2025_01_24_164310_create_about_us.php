@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('member_name');
             $table->string('member_role');
+            $table->string('image');
             $table->enum('status', ['inactive', 'active'])->default('active');
 
             $table->timestamps();

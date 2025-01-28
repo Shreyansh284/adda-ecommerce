@@ -13,15 +13,32 @@ class RatingController extends Controller
     public function index()
     {
         //
-    return view ('admin.rating.ratings');
+        $ratings=Rating::all();
+    return view ('admin.rating.ratings',compact('ratings'));
     }
+
+    public function toggleStatus($ratingId)
+{
+    // Find the rating by ID
+    $rating = Rating::findOrFail($ratingId);
+
+    // Toggle the status
+    $rating->status = $rating->status === 'active' ? 'inactive' : 'active';
+
+    // Save the updated status
+    $rating->save();
+
+    // Redirect back with a success message
+    return redirect()->back()->with('success', 'Rating status updated successfully!');
+}
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+    
     }
 
     /**

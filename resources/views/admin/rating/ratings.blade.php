@@ -41,21 +41,28 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($ratings as  $rating)
+                    
                 <tr>
-                  <td>CU121235</td>
-                  <td>CU121235</td>
-                  <td>CU121235</td>
-                  <td>Good</td>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nulla .</td>
-                  <td>4</td>
-                  <td ><span class="badge text-bg-success">Active</span></td>
-                  <td>
-                    <div>
-                        <i class="ri-edit-box-fill text-warning"></i>
-                        <i class="ri-delete-bin-6-fill text-danger"></i>
-                    </div>
-                  </td>
+                    <td>{{$rating->id}}</td>
+                    <td>{{$rating->productId}}</td>
+                    <td>{{$rating->userId}}</td>
+                    <td>{{$rating->title}}</td>
+                    <td>{{$rating->description}}</td>
+                    <td>{{$rating->rating}}</td>
+                    <td>@if ($rating->status=='active')
+                    <a href="{{ URL::to('/') }}/admin/rating/status/{{$rating->id}}"><span class="badge text-bg-success">Active</span></a>    
+                    @elseif($rating->status=='inactive')   
+                    <a href="{{ URL::to('/') }}/admin/rating/status/{{$rating->id}}"><span class="badge text-bg-warning">Inactive</span></a>                    
+                    @endif</td>    
+                    <td>
+                        <div>
+                            <i class="ri-edit-box-fill text-warning"></i>
+                            <i class="ri-delete-bin-6-fill text-danger"></i>
+                        </div>
+                    </td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
             <!-- End Table with stripped rows -->

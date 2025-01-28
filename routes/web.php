@@ -45,3 +45,33 @@ Route::get('/admin/states', [StateController::class, 'index']);
 Route::get('/admin/payments', [PaymentController::class, 'index']);
 Route::get('/admin/product/add', [ProductController::class, 'create']);
 Route::post('/admin/product/add', [ProductController::class, 'store'])->name("store-product");
+
+// About Us
+Route::get('/admin/aboutUs',[AdminController::class,'aboutUs']);
+Route::get('/admin/aboutUs/add',[AdminController::class,'createAboutUs']);
+Route::post('/admin/aboutUs/add',[AdminController::class,'storeAboutUs'])->name('store-about');
+
+
+
+// Categories
+Route::get('/admin/categories',[CategoryController::class,'index']);
+Route::get('/admin/category/add',[CategoryController::class,'create']);
+Route::post('/admin/category/add',[CategoryController::class,'store'])->name('store-category');
+Route::get('/admin/category/edit/{id}',[CategoryController::class,'edit']);
+Route::post('/admin/category/update/{id}',[CategoryController::class,'update'])->name('update-category');
+Route::get('/admin/category/delete/{id}',[CategoryController::class,'destroy']);
+Route::get('/admin/category/status/{id}',[CategoryController::class,'toggleStatus']);
+
+// Sub Categories
+Route::get('/admin/subCategories',[SubCategoryController::class,'index']);
+Route::get('/admin/subCategory/add',[SubCategoryController::class,'create']);
+Route::post('/admin/subCategory/add',[SubCategoryController::class,'store'])->name('store-subCategory');
+Route::get('/admin/subCategory/edit/{id}',[SubCategoryController::class,'edit']);
+Route::post('/admin/subCategory/update/{id}',[SubCategoryController::class,'update'])->name('update-subCategory');
+Route::get('/admin/subCategory/delete/{id}',[SubCategoryController::class,'destroy']);
+Route::get('/admin/subCategory/status/{id}',[SubCategoryController::class,'toggleStatus']);
+
+// Rating
+
+Route::get('/admin/ratings',[RatingController::class,'index']);
+Route::get('/admin/rating/status/{id}',[RatingController::class,'toggleStatus']);

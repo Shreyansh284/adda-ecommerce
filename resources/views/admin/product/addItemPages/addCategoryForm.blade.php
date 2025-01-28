@@ -17,6 +17,7 @@
                     <h4 class="card-title text-center mb-4">Add Category</h4>
                     <form action="{{route ('store-category')}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        
                         <div class="mb-3 col-5">
                             <label for="categoryName" class="form-label">Category Name</label>
                             <input type="text" name="categoryName" id="categoryName" class="form-control" placeholder="Enter category name" >

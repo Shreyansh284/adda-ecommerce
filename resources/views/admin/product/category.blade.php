@@ -42,16 +42,20 @@
                 <tr>
                   <td>{{$category->id}}</td>
                   <td>{{$category->categoryName}}</td>
-                  <td ><div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" 
-                    {{($category->status=='active')? 'checked' :''}}>
-                  </div></td>
+                 
+                  <td>@if ($category->status=='active')
+                    <a href="{{ URL::to('/') }}/admin/category/status/{{$category->id}}"><span class="badge text-bg-success">Active</span></a>    
+                    @elseif($category->status=='inactive')   
+                    <a href="{{ URL::to('/') }}/admin/category/status/{{$category->id}}"><span class="badge text-bg-warning">Inactive</span></a>                    
+                    @endif</td>  
                   <td>
                     <div>
                         <a href="{{ URL::to('/') }}/admin/category/edit/{{$category->id}}">
                           <i class="ri-edit-box-fill text-warning"></i>
                         </a>
+                        <a href="{{ URL::to('/') }}/admin/category/delete/{{$category->id}}">
                         <i class="ri-delete-bin-6-fill text-danger"></i>
+                        </a>
                     </div>
                   </td>
                 </tr>
