@@ -12,7 +12,8 @@ class ColorController extends Controller
      */
     public function index()
     {
-        return view('admin.product.color');
+        $colors = Color::all();
+        return view('admin.product.color', compact('colors'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.addItemPages.addColorForm');
     }
 
     /**
@@ -28,7 +29,12 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Color::create([
+            'color' => $request->colorName,
+            'hexcode' => $request->colorCode,
+        ]);
+    
+        return redirect('/admin/colors');
     }
 
     /**
@@ -42,9 +48,10 @@ class ColorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Color $color)
+    public function edit($id)
     {
-        //
+        $color = color::findOrFail($id);
+        return view('admin.product.editItemPages.editColorForm', compact('color'));
     }
 
     /**
@@ -52,14 +59,20 @@ class ColorController extends Controller
      */
     public function update(Request $request, Color $color)
     {
-        //
+        $color = Color::where('id', $request->id)->first();
+        $color->color = $request->colorName;
+        $color->hexcode = $request->colorCode;
+        $color->save();
+    
+        return redirect('/admin/colors');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Color $color)
+    public function destroy($id)
     {
-        //
+        $color = color::where('id', $id)->delete();
+        return redirect('/admin/colors');
     }
 }

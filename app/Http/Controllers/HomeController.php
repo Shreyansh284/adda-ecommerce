@@ -71,26 +71,69 @@ class HomeController extends Controller
     }
     public function registration_action(Request $request)
     {
-        $user = new User();
-        $user->name = $request->name;
-        $user->number = $request->number; 
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password); 
-        $user->save();
+        $request->validate([
+            'first_name' => 'required|string|max:50',
+            'mobile_number' => 'required|numeric|digits:10|unique:users,number',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+        ]);
+        // dd($request->all());
+        User::create([
+            'name' => $request->first_name,
+            'number' => $request->mobile_number,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
-        return redirect()->route('login');
+        return redirect('login');
+
+        // return redirect()->route('login');
     }
 
     public function login_action(Request $request)
     {
-        if (Auth::attempt([
+        // Backend validation rules
+        $validatedData = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ]);
+    
+        $credentials = [
             'email' => $request->email,
-            'password' => $request->pwd
-        ])) {
-            return redirect()->intended('/admin/dashboard'); // or use your home route
+            'password' => $request->password,
+        ];
+    
+        // Attempt login with "remember me" functionality
+        if (Auth::attempt($credentials, $request->remember)) {
+            $user = Auth::user();
+    
+            // Role-based redirection
+            if ($user->role === 'admin') {
+                return redirect()->intended('/admin/dashboard');
+            } elseif ($user->role === 'user') {
+                return redirect('/');
+            } else {
+                Auth::logout();
+                return redirect()->back()->withErrors(['email' => 'Unauthorized role access.'])->withInput();
+            }
         } else {
-            return back()->withErrors(['email' => 'Invalid credentials'])->withInput();
+            return redirect()->back()->withErrors([
+                'email' => 'Invalid email or password.',
+            ])->withInput();
         }
+    }
+    
+    public function logout(Request $request)
+    {
+        // Invalidate the user session
+        Auth::logout();
+
+        // Clear session and regenerate CSRF token
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        // Redirect to login or home page
+        return redirect('/');
     }
 
     public function forgot_password_action(Request $request)

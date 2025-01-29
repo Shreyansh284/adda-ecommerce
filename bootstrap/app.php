@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\UserMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -11,7 +13,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+
+            'user'=>UserMiddleware::class,  //this is new middleware that i created it 
+            'admin'=>AdminMiddleware::class,  //this is new middleware that i created it 
+     
+             ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('state');
             $table->string('codeState');
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->enum('status', ['active', 'inactive', 'delete'])->default('active');
             $table->timestamps();
         });
     }
