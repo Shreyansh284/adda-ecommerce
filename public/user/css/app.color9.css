@@ -72,6 +72,10 @@ body {
 .config {
   overflow: hidden; }
 
+.text-danger{
+    color : red !important;
+  }
+
 /**
  * Basic styles for headings and paragraph
  */

@@ -18,27 +18,27 @@ class HomeController extends Controller
     //
     public function index()
     {
-        $sliders=HomeSlider::where('status','active')->get();
+        $sliders = HomeSlider::where('status', 'active')->get();
         // $product
-        return view('user.index',compact('sliders'));
+        return view('user.index', compact('sliders'));
     }
     public function shop()
     {
         $products = Product::with(['category', 'images', 'ratings'])
-        ->where('status', 'active') // Optional: filter active products
-        ->get();
-    
-        return view('user.shop',compact('products'));
+            ->where('status', 'active') // Optional: filter active products
+            ->get();
+
+        return view('user.shop', compact('products'));
     }
     public function about()
     {
-        $abouts=AboutUs::where('status','active')->get();
-        return view('user.about',compact('abouts'));
+        $abouts = AboutUs::where('status', 'active')->get();
+        return view('user.about', compact('abouts'));
     }
     public function contact()
     {
-        $contacts=ContactUs::where('status','active')->latest()->first();
-        return view('user.contact',compact('contacts'));
+        $contacts = ContactUs::where('status', 'active')->latest()->first();
+        return view('user.contact', compact('contacts'));
     }
     public function productDetails()
     {
@@ -73,17 +73,24 @@ class HomeController extends Controller
     {
         $request->validate([
             'first_name' => 'required|string|max:50',
-            'mobile_number' => 'required|numeric|digits:10|unique:users,number',
+            'mobile_number' => 'required|numeric|digits:10|unique:users,mobile',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
         ]);
         // dd($request->all());
-        User::create([
-            'name' => $request->first_name,
-            'number' => $request->mobile_number,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        // User::create([
+        //     'name' => $request->first_name,
+        //     'mobile' => $request->mobile_number,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
+
+        $user = new User();
+        $user->name = $request->first_name;
+        $user->mobile = $request->mobile_number;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
 
         return redirect('login');
 
@@ -97,16 +104,16 @@ class HomeController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
-    
+
         $credentials = [
             'email' => $request->email,
             'password' => $request->password,
         ];
-    
+
         // Attempt login with "remember me" functionality
         if (Auth::attempt($credentials, $request->remember)) {
             $user = Auth::user();
-    
+
             // Role-based redirection
             if ($user->role === 'admin') {
                 return redirect()->intended('/admin/dashboard');
@@ -122,7 +129,7 @@ class HomeController extends Controller
             ])->withInput();
         }
     }
-    
+
     public function logout(Request $request)
     {
         // Invalidate the user session
@@ -136,8 +143,5 @@ class HomeController extends Controller
         return redirect('/');
     }
 
-    public function forgot_password_action(Request $request)
-    {
-    }
-
+    public function forgot_password_action(Request $request) {}
 }
