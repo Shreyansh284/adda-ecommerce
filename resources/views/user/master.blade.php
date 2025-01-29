@@ -277,35 +277,42 @@
 
                                         <span class="js-menu-toggle"></span>
                                         <ul style="width:120px">
-                                            <li>
-
-                                                <a href="myProfile"><i class="fas fa-user-circle u-s-m-r-6"></i>
-
-                                                    <span>Account</span></a>
-                                            </li>
 
                                             @if (Auth::check())
-                                            <li>
-                                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                       <i class="fas fa-lock-open u-s-m-r-6">Logout</i>
+                                                <li>
+
+                                                    <a href="myProfile"><i class="fas fa-user-circle u-s-m-r-6"></i>
+
+                                                        <span>Account</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                        <i class="fas fa-lock u-s-m-r-6"></i>
+                                                        <span>Signout</span>
                                                     </a>
-                                            
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                        class="d-none">
                                                         @csrf
                                                     </form>
                                                 </li>
-                                                @else
+                                            @else
                                                 <li>
 
                                                     <a href="registration"><i class="fas fa-user-plus u-s-m-r-6"></i>
-    
-                                                        <span>Signup</span></a>
+
+                                                        <span>Signup</span>
+                                                    </a>
                                                 </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}"><i class="fas fa-lock-open u-s-m-r-6"></i>Signin</a>
+                                                    <a href="{{ route('login') }}"><i
+                                                            class="fas fa-lock-open u-s-m-r-6"></i>
+                                                        <span>Signin</span>
+                                                    </a>
                                                 </li>
-                                                @endif
+                                            @endif
                                         </ul>
                                         <!--====== End - Dropdown ======-->
                                     </li>

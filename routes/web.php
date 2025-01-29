@@ -23,6 +23,11 @@ Route::post('/registration', [HomeController::class, 'registration_action'])->na
 Route::post('/login', [HomeController::class, 'login_action'])->name('login_action');
 Route::post('/forgot-password', [HomeController::class, 'forgot_password_action'])->name('forgot_password_action');
 
+Route::get('/about', [HomeController::class, 'about']);
+Route::get('/contact', [HomeController::class, 'contact']);
+Route::get('/shop', [HomeController::class, 'shop']);
+Route::get('/productDetails', [HomeController::class, 'productDetails']);
+
 
 Route::middleware(['admin:admin'])->group(function () {
 
@@ -119,16 +124,6 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::post('/admin/city/toggle-city-status', [CityController::class, 'toggleStatus'])->name('toggleCityStatus');
     Route::get('/admin/city/delete/{id}', [CityController::class, 'destroy'])->name('delete-city');
 
-
-    //  size
-    Route::get('/admin/size/add', [CityController::class, 'create']);
-    Route::post('/admin/size/add', [CityController::class, 'store'])->name('store-size');
-    Route::get('/admin/size/edit/{id}', [CityController::class, 'edit'])->name('edit-size');
-    Route::post('/admin/size/update', [CityController::class, 'update'])->name('update-size');
-    Route::post('/admin/size/toggle-size-status', [CityController::class, 'toggleStatus'])->name('toggleCityStatus');
-    Route::get('/admin/size/delete/{id}', [CityController::class, 'destroy'])->name('delete-size');
-
-
     //  color
     Route::get('/admin/color/add', [ColorController::class, 'create']);
     Route::post('/admin/color/add', [ColorController::class, 'store'])->name('store-color');
@@ -140,10 +135,10 @@ Route::middleware(['admin:admin'])->group(function () {
 
 // User Dashboard
 Route::middleware(['user:user'])->group(function () {
-    Route::get('/about', [HomeController::class, 'about']);
-    Route::get('/contact', [HomeController::class, 'contact']);
-    Route::get('/shop', [HomeController::class, 'shop']);
-    Route::get('/productDetails', [HomeController::class, 'productDetails']);
+    // Route::get('/about', [HomeController::class, 'about']);
+    // Route::get('/contact', [HomeController::class, 'contact']);
+    // Route::get('/shop', [HomeController::class, 'shop']);
+    // Route::get('/productDetails', [HomeController::class, 'productDetails']);
     Route::get('/checkout', [HomeController::class, 'checkout']);
     Route::get('/myCart', [HomeController::class, 'myCart']);
     Route::get('/wishlist', [HomeController::class, 'wishlist']);
