@@ -50,6 +50,29 @@ Route::post('/admin/product/add', [ProductController::class, 'store'])->name("st
 Route::get('/admin/aboutUs',[AdminController::class,'aboutUs']);
 Route::get('/admin/aboutUs/add',[AdminController::class,'createAboutUs']);
 Route::post('/admin/aboutUs/add',[AdminController::class,'storeAboutUs'])->name('store-about');
+Route::get('/admin/aboutUs/edit/{id}',[AdminController::class,'editAboutUs']);
+Route::post('/admin/aboutUs/edit/{id}',[AdminController::class,'updateAboutUs'])->name('update-about');
+Route::get('/admin/aboutUs/delete/{id}',[AdminController::class,'deleteAboutUs']);
+Route::get('/admin/aboutUs/status/{id}',[AdminController::class,'toggleStatusAboutUs']);
+
+
+// Contact Us 
+Route::get('/admin/contactUs',[AdminController::class,'contactUs']);
+Route::get('/admin/contactUs/add',[AdminController::class,'createContactUs']);
+Route::post('/admin/contactUs/add',[AdminController::class,'storeContactUs'])->name('store-contact');
+Route::get('/admin/contactUs/edit/{id}',[AdminController::class,'editContactUs']);
+Route::post('/admin/contactUs/edit/{id}',[AdminController::class,'updateContactUs'])->name('update-contact');
+Route::get('/admin/contactUs/delete/{id}',[AdminController::class,'deleteContactUs']);
+Route::get('/admin/contactUs/status/{id}',[AdminController::class,'toggleStatusContactUs']);
+
+// Home Slider
+Route::get('/admin/slider',[AdminController::class,'homeSlider']);
+Route::get('/admin/slider/add',[AdminController::class,'createHomeSlider']);
+Route::post('/admin/slider/add',[AdminController::class,'storeHomeSlider'])->name('store-slider');
+Route::get('/admin/slider/edit/{id}',[AdminController::class,'editHomeSlider']);
+Route::post('/admin/slider/edit/{id}',[AdminController::class,'updateHomeSlider'])->name('update-slider');
+Route::get('/admin/slider/delete/{id}',[AdminController::class,'deleteHomeSlider']);
+Route::get('/admin/slider/status/{id}',[AdminController::class,'toggleStatusHomeSlider']);
 
 
 

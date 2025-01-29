@@ -19,7 +19,7 @@
                     <h4 class="card-title text-center mb-4">Edit About</h4>
                     <form action="{{ route('update-about', $aboutUs->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
+                     
                         <div class="d-flex g-2 justify-content-between">
                             <div class="mb-3 col-5">
                                 <label for="member_name" class="form-label">Member Name</label>

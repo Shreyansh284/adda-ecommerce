@@ -608,7 +608,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-12">
+                            {{-- <div class="col-lg-4 col-md-12">
                                 <div class="outer-footer__content">
 
                                     <span class="outer-footer__content-title">Join our Newsletter</span>
@@ -646,7 +646,7 @@
                                             on promotions, new arrivals, discount and coupons.</span>
                                     </form>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -684,7 +684,7 @@
 
 
             <!--====== Quick Look Modal ======-->
-            <div class="modal fade" id="quick-look">
+            {{-- <div class="modal fade" id="quick-look">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content modal--shadow">
 
@@ -927,7 +927,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--====== End - Quick Look Modal ======-->
 
 
@@ -986,7 +986,7 @@
 
 
             <!--====== Newsletter Subscribe Modal ======-->
-            <div class="modal fade new-l" id="newsletter-modal">
+            {{-- <div class="modal fade new-l" id="newsletter-modal">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content modal--shadow">
 
@@ -1035,7 +1035,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--====== End - Newsletter Subscribe Modal ======-->
             <!--====== End - Modal Section ======-->
         </div>

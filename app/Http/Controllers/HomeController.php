@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutUs;
+use App\Models\ContactUs;
+use App\Models\HomeSlider;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,19 +18,27 @@ class HomeController extends Controller
     //
     public function index()
     {
-        return view('user.index');
+        $sliders=HomeSlider::where('status','active')->get();
+        // $product
+        return view('user.index',compact('sliders'));
     }
     public function shop()
     {
-        return view('user.shop');
+        $products = Product::with(['category', 'images', 'ratings'])
+        ->where('status', 'active') // Optional: filter active products
+        ->get();
+    
+        return view('user.shop',compact('products'));
     }
     public function about()
     {
-        return view('user.about');
+        $abouts=AboutUs::where('status','active')->get();
+        return view('user.about',compact('abouts'));
     }
     public function contact()
     {
-        return view('user.contact');
+        $contacts=ContactUs::where('status','active')->latest()->first();
+        return view('user.contact',compact('contacts'));
     }
     public function productDetails()
     {

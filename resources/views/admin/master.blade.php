@@ -197,6 +197,11 @@
               <i class="bi bi-circle"></i><span>Contact Us</span>
             </a>
           </li>
+          <li>
+            <a href="{{ URL::to('/') }}/admin/slider">
+              <i class="bi bi-circle"></i><span>Slider</span>
+            </a>
+          </li>
         </ul>
       </li>
     </ul>

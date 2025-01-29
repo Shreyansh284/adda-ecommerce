@@ -8,4 +8,8 @@ class Rating extends Model
 {
     //
     public $tablename="ratings";
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

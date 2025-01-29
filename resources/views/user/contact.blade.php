@@ -58,9 +58,7 @@
 
                                         <span class="contact-o__info-text-1">LET'S HAVE A CALL</span>
 
-                                        <span class="contact-o__info-text-2">(+0) 900 901 904</span>
-
-                                        <span class="contact-o__info-text-2">(+0) 900 901 902</span>
+                                        <span class="contact-o__info-text-2">(+91){{$contacts->mobile}} </span>
                                     </div>
                                 </div>
                             </div>
@@ -71,9 +69,7 @@
 
                                         <span class="contact-o__info-text-1">OUR LOCATION</span>
 
-                                        <span class="contact-o__info-text-2">4247 Ashford Drive VA-20006</span>
-
-                                        <span class="contact-o__info-text-2">Virginia US</span>
+                                        <span class="contact-o__info-text-2">{{$contacts->location}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -84,9 +80,7 @@
 
                                         <span class="contact-o__info-text-1">WORK TIME</span>
 
-                                        <span class="contact-o__info-text-2">5 Days a Week</span>
-
-                                        <span class="contact-o__info-text-2">From 9 AM to 7 PM</span>
+                                        <span class="contact-o__info-text-2">{{$contacts->timeing}}</span>
                                     </div>
                                 </div>
                             </div>
