@@ -9,24 +9,32 @@
                 <div class="row">
                     <div class="col-md-4">
                         <!-- Product Image -->
-                        <img src="/user/img/product/product-4.jpg" alt="Product Image" class="img-fluid rounded">
+                        <img src="{{ asset($product->images->first()->image) }}" alt="Product Image"
+                            class="img-fluid rounded">
                     </div>
                     <div class="col-md-8">
-                        <!-- Product Info -->
-                        <h5><strong>Product Name:</strong> <span class="text-primary">Example Product</span></h5>
-                        <p><strong>Product ID:</strong> 1</p>
-                        <p><strong>Price:</strong> $50.00</p>
-                        <p><strong>Status:</strong> Available</p>
-                        <p><strong>Category:</strong> Electronics</p>
-                        <p><strong>Sub-category:</strong> Accessories</p>
-                        <p><strong>Details:</strong> This is a sample product description . Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis tempore odio a? Laborum a reiciendis, officiis itaque, provident error voluptates non doloribus dolorem totam voluptate doloremque, exercitationem delectus sint excepturi!</p>
-                        <p><strong>Additional Description:</strong> Additional details about the product can go here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eum asperiores, a molestias nobis assumenda consequuntur error, alias molestiae magni accusamus voluptatibus in necessitatibus voluptas eligendi sapiente laborum temporibus commodi?</p>
-                        <p><strong>Available Sizes:</strong></p>
+                        <h5><strong>Product Name:</strong> <span class="text-primary">{{ $product->productName }}</span>
+                        </h5>
+                        <p><strong>Product ID:</strong> {{ $product->id }}</p>
+                        <p><strong>Price:</strong> {{ $product->price }}</p>
+                        {{-- <p><strong>Status:</strong> Available</p> --}}
+                        <p><strong>Category:</strong> {{ $product->category->categoryName }}</p>
+                        <p><strong>Sub-category:</strong> {{ $product->subcategory->subCategoryName }}</p>
+                        <p><strong>Details:</strong> {{ $product->description }}</p>
+                        <p><strong>Additional Description:</strong> {{ $product->additionalInfo }}</p>
+                        {{-- <p><strong>Available Sizes:</strong></p>
                         <ul>
                             <li>Small - 10 in stock</li>
                             <li>Medium - 5 in stock</li>
                             <li>Large - 2 in stock</li>
+                        </ul> --}}
+                        <p><strong>Available Sizes:</strong></p>
+                        <ul>
+                            @foreach ($product->sizes as $size)
+                                <li>{{ strtoupper($size->size) }} - {{ $size->quantity }} in stock</li>
+                            @endforeach
                         </ul>
+
                     </div>
                 </div>
             </div>
