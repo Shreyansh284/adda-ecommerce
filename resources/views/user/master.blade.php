@@ -12,7 +12,9 @@
 
     <!--====== Google Font ======-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--====== Vendor Css ======-->
     <link rel="stylesheet" href="/user/css/vendor.css">
@@ -266,7 +268,8 @@
 
                                 <!--====== List ======-->
                                 <ul class="ah-list ah-list--design1 ah-list--link-color-secondary">
-                                    <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Account">
+                                    <li class="has-dropdown" data-tooltip="tooltip" data-placement="left"
+                                        title="Account">
 
                                         <a><i class="far fa-user-circle"></i></a>
 
@@ -278,22 +281,31 @@
 
                                                 <a href="myProfile"><i class="fas fa-user-circle u-s-m-r-6"></i>
 
-                                                    <span>Account</span></a></li>
+                                                    <span>Account</span></a>
+                                            </li>
+
+                                            @if (Auth::check())
                                             <li>
+                                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                       <i class="fas fa-lock-open u-s-m-r-6">Logout</i>
+                                                    </a>
+                                            
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                        @csrf
+                                                    </form>
+                                                </li>
+                                                @else
+                                                <li>
 
-                                                <a href="registration"><i class="fas fa-user-plus u-s-m-r-6"></i>
+                                                    <a href="registration"><i class="fas fa-user-plus u-s-m-r-6"></i>
+    
+                                                        <span>Signup</span></a>
+                                                </li>
+                                                <li>
 
-                                                    <span>Signup</span></a></li>
-                                            <li>
-
-                                                <a href="login"><i class="fas fa-lock u-s-m-r-6"></i>
-
-                                                    <span>Signin</span></a></li>
-                                            <li>
-
-                                                <a href="signup.html"><i class="fas fa-lock-open u-s-m-r-6"></i>
-
-                                                    <span>Signout</span></a></li>
+                                                    <a href="{{ route('login') }}"><i class="fas fa-lock-open u-s-m-r-6"></i>Signin</a>
+                                                </li>
+                                                @endif
                                         </ul>
                                         <!--====== End - Dropdown ======-->
                                     </li>
