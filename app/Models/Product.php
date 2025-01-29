@@ -22,4 +22,14 @@ class Product extends Model
     {
         return $this->hasMany(Rating::class, 'productId'); // Assuming you have a 'ratings' table with 'productId' foreign key
     }
+    public function subcategory()
+    {
+        return $this->belongsTo(SubCategory::class, 'subCategoryId');
+    }
+    
+    public function sizes()
+    {
+        return $this->hasMany(Size::class, 'productId');
+    }
+
 }
