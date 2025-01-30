@@ -72,13 +72,17 @@
                                 </div>
                             </div>
                             <div class="u-s-m-b-15">
-                                <form class="pd-detail__form">
+                                <form method="POST" action="{{ route('cart.add') }}">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="quantity" value="1"> <!-- Default quantity is 1 -->
                                     <div class="pd-detail-inline-2">
                                         <div class="u-s-m-b-15">
-                                            <a href="mycart" class="btn btn--e-brand-b-2">Add to Cart</a>
+                                            <button type="submit" class="btn btn--e-brand-b-2">Add to Cart</button>
                                         </div>
                                     </div>
                                 </form>
+                                
                             </div>
                         </div> 
                     </div>

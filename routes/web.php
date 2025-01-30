@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ColorController;
@@ -144,9 +145,14 @@ Route::middleware(['user:user'])->group(function () {
     // Route::get('/about', [HomeController::class, 'about']);
     // Route::get('/contact', [HomeController::class, 'contact']);
     // Route::get('/shop', [HomeController::class, 'shop']);
-    // Route::get('/productDetails', [HomeController::class, 'productDetails']);
-    Route::get('/checkout', [HomeController::class, 'checkout']);
-    Route::get('/myCart', [HomeController::class, 'myCart']);
+    Route::get('/productDetails', [HomeController::class, 'productDetails'])->name('product.detail');
+    Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
+
+
+    Route::get('/myCart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::get('/cart/remove/{id}', [CartController::class, 'addToCart'])->name('cart.remove');
+
     Route::get('/wishlist', [HomeController::class, 'wishlist']);
     Route::get('/wishlist/add/{id}', [HomeController::class, 'addToWishlist']);
     Route::get('/wishlist/remove/{id}', [HomeController::class, 'removeFromWishlist']);

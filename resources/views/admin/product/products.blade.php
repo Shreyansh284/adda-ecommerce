@@ -16,6 +16,9 @@
 
                 @if (count($products) == 0)
                     <h5 class="card-title">No Products</h5>
+                    <div class="d-flex justify-content-end">
+                        <a class="btn btn-primary " href="{{ URL::to('/') }}/admin/product/add">+ Add Product</a>
+                    </div>
                 @else
                     <div class="card">
                         <div class="card-body">
