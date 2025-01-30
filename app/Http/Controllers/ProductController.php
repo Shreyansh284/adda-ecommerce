@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('images', 'sizes')->get();
+        $products = Product::with('images', 'sizes')->where('status', 'active')->get();
         // dd($products);
         return view('admin.product.products', compact('products'));
     }

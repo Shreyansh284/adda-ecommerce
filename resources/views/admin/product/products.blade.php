@@ -55,12 +55,10 @@
                                             </td>
                                             <td>
                                                 <div>
-                                                    <i class="ri-eye-fill text-primary" data-bs-toggle="modal"
-                                                        data-bs-target="#productDetailModal"></i>
+                                                    <i class="ri-eye-fill text-primary view-product" data-bs-toggle="modal"
+                                                        data-bs-target="#productDetailModal"
+                                                        data-product="{{ json_encode($product) }}"></i>
 
-                                                    {{-- <i class="ri-edit-box-fill text-warning"></i>
-                                                <i class="ri-delete-bin-6-fill text-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteProductConfirm"></i> --}}
                                                     <a href="{{ URL::to('/') }}/admin/product/edit/{{ $product->id }}">
                                                         <i class="ri-edit-box-fill text-warning"></i>
                                                     </a>
