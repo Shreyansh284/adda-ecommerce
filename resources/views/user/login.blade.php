@@ -65,7 +65,13 @@
 
                                 <form class="l-f-o__form" id="loginForm" method="POST" action="{{ route('login_action') }}">
                                     @csrf
-                                
+                                    <div class="gl-s-api">
+                                    <div class="u-s-m-b-15">
+
+                                        <a href="{{route('auth.googleLogin')}}" class="gl-s-api__btn gl-s-api__btn--gplus" type="button"><i class="fab fa-google"></i>
+
+                                            <span>Signin with Google</span></a></div>
+                                    </div>
                                     <div class="u-s-m-b-30">
                                         <label class="gl-label" for="login-email">E-MAIL *</label>
                                         <input class="input-text input-text--primary-style" type="email" id="login-email" name="email" 

@@ -8,11 +8,13 @@ use App\Models\HomeSlider;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Wishlist;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Socialite\Facades\Socialite;
 
 class HomeController extends Controller
 {
@@ -178,6 +180,50 @@ class HomeController extends Controller
 
         // Redirect to login or home page
         return redirect('/');
+    }
+
+    public function googleLogin()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleAuthentication()
+    {
+        // dd(Socialite::driver('google')->user());
+        try
+        {
+            $googleUser=Socialite::driver('google')->user();
+            // dd($googleUser);
+            $user = User::where('googleId', $googleUser->id)->first();
+            // dd($user);
+            if($user!=null)
+            {
+                // dd("hi");
+                Auth::login($user);
+                return redirect('/');
+            }
+            else
+            {
+                $newUser = new User();
+                $newUser->name=$googleUser->name;
+                $newUser->email=$googleUser->email;
+                $newUser->password=Hash::make($googleUser->name);
+                $newUser->googleId=$googleUser->id;
+                $newUser->save();
+            //    $userdata= User::create(['name'=>$googleUser->name,'email'=>$googleUser->email,'password'=>Hash::make($googleUser->name),'googleId'=>$googleUser->id]);
+                if($newUser)
+                {
+                    Auth::login($newUser);
+                    return redirect('/');
+                }
+            }
+        }
+        catch(Exception $e)
+        {
+            return redirect('/')->with('error','Something went wrong');
+        }
+
+
     }
 
     public function forgot_password_action(Request $request) {}

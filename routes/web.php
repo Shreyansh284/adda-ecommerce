@@ -28,6 +28,12 @@ Route::get('/contact', [HomeController::class, 'contact']);
 Route::get('/shop', [HomeController::class, 'shop']);
 Route::get('/productDetails', [HomeController::class, 'productDetails']);
 
+Route::controller(HomeController::class)->group(function()
+{
+
+    Route::get('/auth/googleLogin','googleLogin')->name('auth.googleLogin');
+    Route::get('/auth/google/call-back','googleAuthentication');
+});
 
 Route::middleware(['admin:admin'])->group(function () {
 
