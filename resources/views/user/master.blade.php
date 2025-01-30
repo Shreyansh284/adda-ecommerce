@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="/user/images/favicon.png" rel="shortcut icon">
+    <link href="{{ URL::to('/') }}/logo.png" rel="shortcut icon">
     <title>@yield('title')</title>
 
     <!--====== Google Font ======-->
@@ -30,7 +30,7 @@
     <div class="preloader is-active">
         <div class="preloader__wrap">
 
-            <img class="preloader__img" src="/user/images/preloader.png" alt="">
+            <img class="preloader__img" src="{{ asset('/logo.png') }}" alt="">
         </div>
     </div>
 
@@ -208,11 +208,9 @@
                     <div class="secondary-nav">
 
                         <!--====== Dropdown Main plugin ======-->
-                        <a class="main-logo" href="index.html">
+                        <a class="main-logo" href="{{ URL::to('/') }}">
 
-                            <img src="/user/images/logo/logo-1.png" alt=""></a>
-                        <!--====== End - Dropdown Main plugin ======-->
-
+                            <img src="{{ asset('/logo.png') }}" width="200" height="80" alt=""></a>
 
                         <!--====== Dropdown Main plugin ======-->
                         <div class="menu-init" id="navigation2">
@@ -233,7 +231,7 @@
                                     </li>
                                     <li>
 
-                                        <a href="shop">Products</a>
+                                        <a href="{{ URL::to('/') }}/shop">Products</a>
                                     </li>
 
                                     <li>
@@ -516,23 +514,22 @@
                 <div class="outer-footer">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="outer-footer__content u-s-m-b-40">
 
                                     <span class="outer-footer__content-title">Contact Us</span>
                                     <div class="outer-footer__text-wrap"><i class="fas fa-home"></i>
-
-                                        <span>4247 Ashford Drive Virginia VA-20006 USA</span>
+                                        <span>Jaipur Adaa</span>
                                     </div>
                                     <div class="outer-footer__text-wrap"><i class="fas fa-phone-volume"></i>
 
-                                        <span>(+0) 900 901 904</span>
+                                        <span>(+91) 900 901 904</span>
                                     </div>
                                     <div class="outer-footer__text-wrap"><i class="far fa-envelope"></i>
 
                                         <span>contact@domain.com</span>
                                     </div>
-                                    <div class="outer-footer__social">
+                                    {{-- <div class="outer-footer__social">
                                         <ul>
                                             <li>
 
@@ -560,66 +557,28 @@
                                                         class="fab fa-google-plus-g"></i></a>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="outer-footer__content u-s-m-b-40">
 
-                                            <span class="outer-footer__content-title">Information</span>
+                                            <span class="outer-footer__content-title">Useful Links</span>
                                             <div class="outer-footer__list-wrap">
                                                 <ul>
                                                     <li>
-
-                                                        <a href="cart.html">Cart</a>
+                                                        <a href="{{ URL::to('/') }}/myCart">Cart</a>
                                                     </li>
                                                     <li>
-
-                                                        <a href="dashboard.html">Account</a>
+                                                        <a href="{{ URL::to('/') }}/wishlist">Wishlist</a>
                                                     </li>
                                                     <li>
-
-                                                        <a href="shop-side-version-2.html">Manufacturer</a>
+                                                        <a href="{{ URL::to('/') }}/myProfile">Account</a>
                                                     </li>
                                                     <li>
-
-                                                        <a href="dash-payment-option.html">Finance</a>
-                                                    </li>
-                                                    <li>
-
-                                                        <a href="shop-side-version-2.html">Shop</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="outer-footer__content u-s-m-b-40">
-                                            <div class="outer-footer__list-wrap">
-
-                                                <span class="outer-footer__content-title">Our Company</span>
-                                                <ul>
-                                                    <li>
-
-                                                        <a href="about.html">About us</a>
-                                                    </li>
-                                                    <li>
-
-                                                        <a href="contact.html">Contact Us</a>
-                                                    </li>
-                                                    <li>
-
-                                                        <a href="index.html">Sitemap</a>
-                                                    </li>
-                                                    <li>
-
-                                                        <a href="dash-my-order.html">Delivery</a>
-                                                    </li>
-                                                    <li>
-
-                                                        <a href="shop-side-version-2.html">Store</a>
+                                                        <a href="{{ URL::to('/') }}/shop">Shop</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -672,31 +631,21 @@
                 <div class="lower-footer">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="lower-footer__content">
+                            <div class="col-lg-6">
+                                <div class="">
                                     <div class="lower-footer__copyright">
-
-                                        <span>Copyright © 2018</span>
-
-                                        <a href="index.html">Reshop</a>
-
-                                        <span>All Right Reserved</span>
-                                    </div>
-                                    <div class="lower-footer__payment">
-                                        <ul>
-                                            <li><i class="fab fa-cc-stripe"></i></li>
-                                            <li><i class="fab fa-cc-paypal"></i></li>
-                                            <li><i class="fab fa-cc-mastercard"></i></li>
-                                            <li><i class="fab fa-cc-visa"></i></li>
-                                            <li><i class="fab fa-cc-discover"></i></li>
-                                            <li><i class="fab fa-cc-amex"></i></li>
-                                        </ul>
+                                        <span>Copyright © 2025</span>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-lg-6">
+                                <div class="lower-footer__copyright">
+                                    <span>All Right Reserved</span>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-                </div>
             </footer>
 
             <!--====== Modal Section ======-->

@@ -3,13 +3,12 @@
     <!--====== Primary Slider ======-->
     <div class="s-skeleton s-skeleton--h-600 s-skeleton--bg-grey">
         <div class="owl-carousel primary-style-1" id="hero-slider">
-            @foreach ($sliders as $slider )
-                
-            <div class="hero-slide" style="background-image: url({{asset($slider->image)}});">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            {{-- <div class="slider-content slider-content--animation">
+            @foreach ($sliders as $slider)
+                <div class="hero-slide" style="background-image: url('{{ $slider->image }}');">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                {{-- <div class="slider-content slider-content--animation">
 
                                 <span class="content-span-1 u-c-secondary">Latest Update Stock</span>
 
@@ -24,10 +23,10 @@
 
                                 <a class="shop-now-link btn--e-brand" href="shop-side-version-2.html">SHOP NOW</a>
                             </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             @endforeach
             {{-- <div class="hero-slide hero-slide--2">
                 <div class="container">

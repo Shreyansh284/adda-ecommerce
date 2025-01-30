@@ -7,6 +7,7 @@ use App\Models\ContactUs;
 use App\Models\HomeSlider;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -55,8 +56,44 @@ class HomeController extends Controller
 
     public function wishlist()
     {
-        return view('user.wishlist');
+        // $wishlist = Wishlist::where('userId', Auth::user()->id)->get();
+        $wishlists = Wishlist::with('products.images')->get();
+        // dd($wishlists); 
+
+        return view('user.wishlist', compact('wishlists'));
     }
+
+    public function addToWishlist($id)
+    {
+        $wishlist = new Wishlist();
+        $wishlist->productId = $id;
+        $wishlist->userId = Auth::user()->id;
+        $save = $wishlist->save();
+        if ($save) {
+            return redirect('/wishlist');
+        }
+        return redirect('/wishlist');
+    }
+
+    public function removeFromWishlist($id)
+    {
+        $wishlist = Wishlist::where('id', $id)->delete();
+        if ($wishlist) {
+            return redirect('/wishlist');
+        }
+        // return view('user.wishlist');
+        dd('test');
+    }
+
+    public function clearWishlist()
+    {
+        $wishlist = Wishlist::where('userId', Auth::user()->id)->delete();
+        if ($wishlist) {
+            return redirect('/wishlist');
+        }
+    }
+
+
     public function login()
     {
         return view('user.login');

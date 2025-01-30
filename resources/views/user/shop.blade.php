@@ -1,6 +1,6 @@
 @extends('user.master')
 @section('content')
-    <div class="u-s-p-y-90">
+    <div class="">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -40,24 +40,27 @@
                             <div class="row is-grid-active">
                                 @foreach ($products as $product)
                                     <div class="col-lg-3 col-md-4 col-sm-6">
-                                                                  <div class="product-m">
+                                        <div class="product-m">
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
                                                     href="product-detail.html">
 
-                                                    <img class="aspect__img" src="{{ asset($product->images->first()->image) }}"
+                                                    <img class="aspect__img"
+                                                        src="{{ asset($product->images->first()->image) }}"
                                                         alt=""></a>
                                                 <div class="product-m__quick-look">
 
-                                                    <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look-{{$product->id}}"
+                                                    <a class="fas fa-search" data-modal="modal"
+                                                        data-modal-id="#quick-look-{{ $product->id }}"
                                                         data-tooltip="tooltip" data-placement="top" title="Quick Look"></a>
                                                 </div>
 
                                                 <div class="product-m__content">
                                                     <div class="product-m__category">
 
-                                                        <a href="shop-side-version-2.html">{{ $product->category->categoryName }}</a>
+                                                        <a
+                                                            href="shop-side-version-2.html">{{ $product->category->categoryName }}</a>
                                                     </div>
                                                     <div class="product-m__name">
 
@@ -78,8 +81,10 @@
                                                         </div>
                                                         <div class="product-m__wishlist">
 
-                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip"
-                                                                data-placement="top" title="Add to Wishlist"></a>
+                                                            <a class="far fa-heart"
+                                                                href="{{ URL::to('/') }}/wishlist/add/{{ $product->id }}"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Add to Wishlist"></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -134,12 +139,12 @@
                                         </div>
 
                                     </div>
-                                        @include('user.modal.productQuickLookModal', [
-                                            '$product' => $product,
-                                        ])
+                                    @include('user.modal.productQuickLookModal', [
+                                        '$product' => $product,
+                                    ])
                                 @endforeach
-                        </div>
-                        {{-- <div class="u-s-p-y-60">
+                            </div>
+                            {{-- <div class="u-s-p-y-60">
 
                         <!--====== Pagination ======-->
                         <ul class="shop-p__pagination">
@@ -161,9 +166,9 @@
                         </ul>
                         <!--====== End - Pagination ======-->
                     </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

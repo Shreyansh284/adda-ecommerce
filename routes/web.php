@@ -142,5 +142,8 @@ Route::middleware(['user:user'])->group(function () {
     Route::get('/checkout', [HomeController::class, 'checkout']);
     Route::get('/myCart', [HomeController::class, 'myCart']);
     Route::get('/wishlist', [HomeController::class, 'wishlist']);
+    Route::get('/wishlist/add/{id}', [HomeController::class, 'addToWishlist']);
+    Route::get('/wishlist/remove/{id}', [HomeController::class, 'removeFromWishlist']);
+    Route::get('/wishlist/clear', [HomeController::class, 'clearWishlist']);
     Route::post('/logout', [HomeController::class, 'logout'])->name('logout');
 });
