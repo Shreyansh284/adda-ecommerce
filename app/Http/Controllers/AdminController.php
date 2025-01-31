@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\AboutUs;
 use App\Models\ContactUs;
 use App\Models\HomeSlider;
+use App\Models\Order;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -12,7 +15,47 @@ class AdminController extends Controller
     //
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $today = Carbon::today();
+        $thisMonth = Carbon::now()->startOfMonth();
+        $thisYear = Carbon::now()->startOfYear();
+        $lastMonth = Carbon::now()->subMonth()->startOfMonth();
+        $lastYear = Carbon::now()->subYear()->startOfYear();
+
+        // Sales Today vs Yesterday
+        $todaySales = Order::whereDate('created_at', $today)->count();
+        $yesterdaySales = Order::whereDate('created_at', Carbon::yesterday())->count();
+        $salesChange = $yesterdaySales > 0 ? (($todaySales - $yesterdaySales) / $yesterdaySales) * 100 : 100;
+
+        $sales = [
+            'count' => $todaySales,
+            'percentage' => round(abs($salesChange), 2),
+            'status' => $salesChange >= 0 ? 'increase' : 'decrease'
+        ];
+        // dd($sales);
+
+        // Revenue This Month vs Last Month
+        $thisMonthRevenue = Order::whereBetween('created_at', [$thisMonth, Carbon::now()])->sum('price');
+        $lastMonthRevenue = Order::whereBetween('created_at', [$lastMonth, $thisMonth])->sum('price');
+        $revenueChange = $lastMonthRevenue > 0 ? (($thisMonthRevenue - $lastMonthRevenue) / $lastMonthRevenue) * 100 : 100;
+
+        $revenue = [
+            'amount' => $thisMonthRevenue,
+            'percentage' => round(abs($revenueChange), 2),
+            'status' => $revenueChange >= 0 ? 'increase' : 'decrease'
+        ];
+       
+
+        // Customers This Year vs Last Year
+        $thisYearCustomers = User::whereBetween('created_at', [$thisYear, Carbon::now()])->count();
+        $lastYearCustomers = User::whereBetween('created_at', [$lastYear, $thisYear])->count();
+        $customersChange = $lastYearCustomers > 0 ? (($thisYearCustomers - $lastYearCustomers) / $lastYearCustomers) * 100 : 100;
+
+        $customers = [
+            'count' => $thisYearCustomers,
+            'percentage' => round(abs($customersChange), 2),
+            'status' => $customersChange >= 0 ? 'increase' : 'decrease'
+        ];
+        return view('admin.dashboard', compact('sales', 'revenue', 'customers'));
     }
 
     public function users()

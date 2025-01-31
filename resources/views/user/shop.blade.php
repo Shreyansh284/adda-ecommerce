@@ -85,18 +85,13 @@
                                                    
                                                     </div>
                                                     <div class="pd-detail__inline">
-                                                        <!-- Show the original product price -->
-                                                        {{-- <div class="product-m__price">₹{{ number_format($product->price, 2) }}</div> --}}
-                                                        
-                                                        <!-- Show discounted price or original price -->
+                                                       
                                                         <span class="product-m__price">₹{{ number_format($product->price - ($product->price * $product->discount / 100), 2) }}</span>
                                                         
-                                                        <!-- Show discount percentage if applicable -->
                                                         @if($product->discount)
                                                             <span class="product-m__price">
                                                                 ({{ $product->discount }}% OFF)
                                                             </span>
-                                                            <!-- Show original price crossed out -->
                                                             <del class="pd-detail__del">₹{{ number_format($product->price, 2) }}</del>
                                                         @endif
                                                     </div>
@@ -106,12 +101,28 @@
 
                                                             <span>{{ Str::limit($product->description, 100) }}</span>
                                                         </div>
+                                                        @php
+                                                        $isInWishlist = \App\Models\Wishlist::where(
+                                                            'userId',
+                                                            auth()->id(),
+                                                        )
+                                                            ->where('productId', $product->id)
+                                                            ->first();
+                                                    @endphp
+                                        
                                                         <div class="product-m__wishlist">
-
+                                                            @if ($isInWishlist != null)
+                                                            <a class="fas fa-heart"
+                                                                href="{{ URL::to('/') }}/wishlist/remove/{{ $isInWishlist->id }}"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Added to Wishlist"
+                                                                style="color: rgb(189, 17, 57);"></a>
+                                                        @else
                                                             <a class="far fa-heart"
                                                                 href="{{ URL::to('/') }}/wishlist/add/{{ $product->id }}"
                                                                 data-tooltip="tooltip" data-placement="top"
                                                                 title="Add to Wishlist"></a>
+                                                        @endif
                                                         </div>
                                                     </div>
                                                 </div>

@@ -111,8 +111,8 @@
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                                     <input type="hidden" name="quantity" value="1"> <!-- Default quantity is 1 -->
                                     <div class="pd-detail-inline-2">
-                                        <div class="u-s-m-b-15">
-                                            <button type="submit" class="btn btn--e-brand-b-2">Add to Cart</button>
+                                        <div class="u-s-m-b-15 " style="padding-top: 1rem">
+                                            <button type="submit" style="padding: 10px; border-radius: 6px;" class="btn btn--e-brand-b-2">Add to Cart</button>
                                         </div>
                                     </div>
                                 </form>

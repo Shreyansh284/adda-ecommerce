@@ -84,12 +84,20 @@
                                             </div>
                                         </div>
                                         <div class="w-r__wrap-2">
-
-                                            <a class="w-r__link btn--e-brand-b-2" data-modal="modal"
-                                                data-modal-id="#add-to-cart">ADD TO CART</a>
+                                            <form class="pd-detail__form" method="POST" action="{{ route('cart.add') }}">
+                                                @csrf
+                                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                <input type="hidden" name="quantity" value="1">
+                                                <div class="pd-detail-inline-2">
+                                                    <div class="u-s-m-b-15">
+                                                        <button type="submit" class="w-r__link btn--e-brand-b-2">Add to Cart</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            {{-- <a class="w-r__link btn--e-brand-b-2" href="{{route('cart.add')}}">ADD TO CART</a> --}}
 
                                             <a class="w-r__link btn--e-transparent-platinum-b-2"
-                                                href="product-detail.html">VIEW</a>
+                                                href="{{route('product.detail',$product->id)}}">VIEW</a>
 
                                             <a class="w-r__link btn--e-transparent-platinum-b-2"
                                                 href="{{ URL::to('/') }}/wishlist/remove/{{ $wishlist->id }}">REMOVE</a>

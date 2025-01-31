@@ -46,10 +46,10 @@ class HomeController extends Controller
     }
     public function productDetails($id)
     {
-        $product = Product::with(['category', 'images', 'ratings.users','sizes.color'])->where('id',$id)->first();
+        $product = Product::with(['category', 'images', 'ratings.users','sizes.color','subCategory.category'])->where('id',$id)->first();
         $ratings=Rating::where('productId',$id)->get();
-        // dd($product);    
-        return view('user.productDetails',compact('product','ratings'));
+        $products = Product::with(['category', 'images', 'ratings.users'])->where('categoryId',$product->category->id)->get();
+        return view('user.productDetails',compact('product','products'));
     }
     public function myCart()
     {
@@ -85,10 +85,10 @@ class HomeController extends Controller
     {
         $wishlist = Wishlist::where('id', $id)->delete();
         if ($wishlist) {
-            return redirect('/wishlist');
+            // return redirect('/wishlist');
+            return redirect()->back();
         }
-        // return view('user.wishlist');
-        dd('test');
+        // dd('test');
     }
 
     public function clearWishlist()
