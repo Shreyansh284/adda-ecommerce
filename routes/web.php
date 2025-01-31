@@ -151,7 +151,7 @@ Route::middleware(['user:user'])->group(function () {
 
     Route::get('/myCart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-    Route::get('/cart/remove/{id}', [CartController::class, 'addToCart'])->name('cart.remove');
+    Route::get('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
     Route::get('/cart/update', [CartController::class, 'update'])->name('cart.update');
 
     Route::get('/wishlist', [HomeController::class, 'wishlist']);

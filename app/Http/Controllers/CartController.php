@@ -73,7 +73,7 @@ class CartController extends Controller
 
         return redirect()->route('cart.index')->with('success', 'Product added to cart!');
     }
-    
+
     public function update(Request $request)
     {
         $cartItem = Cart::find($request->id);
@@ -86,6 +86,15 @@ class CartController extends Controller
         }
 
         return response()->json(['success' => false, 'message' => 'Item not found'], 404);
+    }
+
+    public function removeFromCart(Request $request, $id)
+    {
+        // dd($id);
+        $cartItem = Cart::where('id', $id)->delete();
+        if ($cartItem) {
+            return redirect()->route('cart.index')->with('success', 'Product removed to cart!');
+        }
     }
 
     /**

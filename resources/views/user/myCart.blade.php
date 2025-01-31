@@ -402,21 +402,21 @@
                         <div class="f-cart__pad-box">
                             <table class="f-cart__table">
                                 <tbody>
-                                    <tr>
+                                    {{-- <tr>
                                         <td>SHIPPING</td>
                                         <td>₹4.00</td>
-                                    </tr>
-                                    <tr>
+                                    </tr> --}}
+                                    {{-- <tr>
                                         <td>TAX</td>
                                         <td>₹0.00</td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr>
                                         <td>SUBTOTAL</td>
                                         <td>₹{{ number_format($totalPrice, 2) }}</td>
                                     </tr>
                                     <tr>
                                         <td>GRAND TOTAL</td>
-                                        <td>₹{{ number_format($totalPrice + 4, 2) }}</td>
+                                        <td>₹{{ number_format($totalPrice, 2) }}</td>
                                     </tr>
                                 </tbody>
                             </table>
