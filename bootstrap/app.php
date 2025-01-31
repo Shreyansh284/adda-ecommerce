@@ -20,7 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         ]);
         $middleware->validateCsrfTokens(except: [
-            'pay',
+            'payOnline',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {})->create();

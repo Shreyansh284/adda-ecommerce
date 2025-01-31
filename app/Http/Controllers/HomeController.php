@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
 use App\Models\Cart;
+use App\Models\City;
 use App\Models\ContactUs;
 use App\Models\HomeSlider;
 use App\Models\Order;
@@ -11,6 +12,7 @@ use App\Models\OrderItem;
 use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Rating;
+use App\Models\State;
 use App\Models\User;
 use App\Models\Wishlist;
 use Exception;
@@ -389,4 +391,17 @@ class HomeController extends Controller
     }
 
     public function forgot_password_action(Request $request) {}
+
+    public function getStates()
+    {
+        $states = State::where('status', 'active')->get();
+        return response()->json($states);
+    }
+
+    // Fetch cities by state_id
+    public function getCities($stateId)
+    {
+        $cities = City::where('stateId', $stateId)->where('status', 'active')->get(['id', 'city']);
+        return response()->json($cities);
+    }
 }
