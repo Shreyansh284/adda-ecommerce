@@ -6050,6 +6050,22 @@ input::-ms-clear {
         display: block;
     }
 }
+.color-box {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.size-option {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    cursor: pointer;
+}
 
 /*--------------------------------------------------------------
 19.0 Shop-Pages

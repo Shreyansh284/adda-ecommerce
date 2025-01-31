@@ -6,6 +6,7 @@ use App\Models\AboutUs;
 use App\Models\ContactUs;
 use App\Models\HomeSlider;
 use App\Models\Product;
+use App\Models\Rating;
 use App\Models\User;
 use App\Models\Wishlist;
 use Exception;
@@ -43,9 +44,12 @@ class HomeController extends Controller
         $contacts = ContactUs::where('status', 'active')->latest()->first();
         return view('user.contact', compact('contacts'));
     }
-    public function productDetails()
+    public function productDetails($id)
     {
-        return view('user.productDetails');
+        $product = Product::with(['category', 'images', 'ratings.users','sizes.color'])->where('id',$id)->first();
+        $ratings=Rating::where('productId',$id)->get();
+        // dd($product);    
+        return view('user.productDetails',compact('product','ratings'));
     }
     public function myCart()
     {

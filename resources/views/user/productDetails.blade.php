@@ -1,30 +1,11 @@
 @extends('user.master')
 @section('content')
-<div class="u-s-p-t-90">
+{{-- <div class="u-s-p-t-90">
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
 
-                <!--====== Product Breadcrumb ======-->
-                <div class="pd-breadcrumb u-s-m-b-30">
-                    <ul class="pd-breadcrumb__list">
-                        <li class="has-separator">
-
-                            <a href="index.hml">Home</a></li>
-                        <li class="has-separator">
-
-                            <a href="shop-side-version-2.html">Electronics</a></li>
-                        <li class="has-separator">
-
-                            <a href="shop-side-version-2.html">DSLR Cameras</a></li>
-                        <li class="is-marked">
-
-                            <a href="shop-side-version-2.html">Nikon Cameras</a></li>
-                    </ul>
-                </div>
-                <!--====== End - Product Breadcrumb ======-->
-
-
+    
                 <!--====== Product Detail Zoom ======-->
                 <div class="pd u-s-m-b-30">
                     <div class="slider-fouc pd-wrap">
@@ -35,15 +16,7 @@
                             <div class="pd-o-img-wrap" data-src="images/product/product-d-2.jpg">
 
                                 <img class="u-img-fluid" src="images/product/product-d-2.jpg" data-zoom-image="images/product/product-d-2.jpg" alt=""></div>
-                            <div class="pd-o-img-wrap" data-src="images/product/product-d-3.jpg">
-
-                                <img class="u-img-fluid" src="images/product/product-d-3.jpg" data-zoom-image="images/product/product-d-3.jpg" alt=""></div>
-                            <div class="pd-o-img-wrap" data-src="images/product/product-d-4.jpg">
-
-                                <img class="u-img-fluid" src="images/product/product-d-4.jpg" data-zoom-image="images/product/product-d-4.jpg" alt=""></div>
-                            <div class="pd-o-img-wrap" data-src="images/product/product-d-5.jpg">
-
-                                <img class="u-img-fluid" src="images/product/product-d-5.jpg" data-zoom-image="images/product/product-d-5.jpg" alt=""></div>
+     
                         </div>
 
                         <span class="pd-text">Click for larger zoom</span>
@@ -57,16 +30,7 @@
                                 <div>
 
                                     <img class="u-img-fluid" src="images/product/product-d-2.jpg" alt=""></div>
-                                <div>
-
-                                    <img class="u-img-fluid" src="images/product/product-d-3.jpg" alt=""></div>
-                                <div>
-
-                                    <img class="u-img-fluid" src="images/product/product-d-4.jpg" alt=""></div>
-                                <div>
-
-                                    <img class="u-img-fluid" src="images/product/product-d-5.jpg" alt=""></div>
-                            </div>
+                                                          </div>
                         </div>
                     </div>
                 </div>
@@ -121,43 +85,16 @@
 
                                 <span class="pd-detail__click-count">(20)</span></span></div>
                     </div>
+               
                     <div class="u-s-m-b-15">
-                        <ul class="pd-social-list">
-                            <li>
-
-                                <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li>
-
-                                <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li>
-
-                                <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a></li>
-                            <li>
-
-                                <a class="s-wa--color-hover" href="#"><i class="fab fa-whatsapp"></i></a></li>
-                            <li>
-
-                                <a class="s-gplus--color-hover" href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="u-s-m-b-15">
-                        <form class="pd-detail__form">
+                        <form class="pd-detail__form"  method="POST" action="{{ route('cart.add') }}">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <input type="hidden" name="quantity" value="1"> <!-- Default quantity is 1 -->
                             <div class="pd-detail-inline-2">
                                 <div class="u-s-m-b-15">
-
-                                    <!--====== Input Counter ======-->
-                                    <div class="input-counter">
-
-                                        <span class="input-counter__minus fas fa-minus"></span>
-
-                                        <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="1000">
-
-                                        <span class="input-counter__plus fas fa-plus"></span></div>
-                                    <!--====== End - Input Counter ======-->
+                                    <button type="submit" class="btn btn--e-brand-b-2">Add to Cart</button>
                                 </div>
-                                <div class="u-s-m-b-15">
-
-                                    <button class="btn btn--e-brand-b-2" type="submit">Add to Cart</button></div>
                             </div>
                         </form>
                     </div>
@@ -181,6 +118,131 @@
             </div>
         </div>
     </div>
+</div> --}}
+<div class="u-s-p-t-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="pd u-s-m-b-30">
+                    <div class="slider-fouc pd-wrap">
+                        <div id="pd-o-initiate">
+                            @foreach ($product->images as $image)
+                                <div class="pd-o-img-wrap" data-src="{{ asset($image->image) }}">
+                                    <img class="u-img-fluid" src="{{ asset($image->image) }}" data-zoom-image="{{ asset($image->image) }}" alt="Product Image">
+                                </div>
+                            @endforeach
+                        </div>
+                        <span class="pd-text">Click for larger zoom</span>
+                    </div>
+                    <div class="u-s-m-t-15">
+                        <div class="slider-fouc">
+                            <div id="pd-o-thumbnail">
+                                @foreach ($product->images as $image)
+                                    <div>
+                                        <img class="u-img-fluid" src="{{ asset($image->image) }}" alt="Thumbnail">
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="pd-detail">
+                    <div>
+                        <span class="pd-detail__name">{{ $product->productName }}</span>
+                    </div>
+                    <div>
+                        <div class="pd-detail__inline">
+                            <!-- Show discounted price or original price -->
+                            <span class="pd-detail__price">₹{{ number_format($product->price - ($product->price * $product->discount / 100), 2) }}</span>
+                            
+                            <!-- Show discount percentage if applicable -->
+                            @if($product->discount)
+                                <span class="pd-detail__discount">
+                                    ({{ $product->discount }}% OFF)
+                                </span>
+                                <!-- Show original price crossed out -->
+                                <del class="pd-detail__del">₹{{ number_format($product->price, 2) }}</del>
+                            @endif
+                        </div>
+                        
+                        
+                        
+                    </div>
+                    <div class="u-s-m-b-15">
+                        <div class="pd-detail__rating gl-rating-style">
+                            @for ($i = 0; $i < 5; $i++)
+                                <!-- Check for fractional star -->
+                                @if ($i < floor($product->ratings->avg('rating')))
+                                    <i class="fas fa-star"></i>
+                                @elseif ($i == floor($product->ratings->avg('rating')) && $product->ratings->avg('rating') - floor($product->ratings->avg('rating')) >= 0.5)
+                                    <i class="fas fa-star-half-alt"></i>
+                                @else
+                                    <i class="far fa-star"></i>
+                                @endif
+                            @endfor
+                            <span class="pd-detail__review u-s-m-l-4">
+                                <a data-click-scroll="#view-review">{{ $product->ratings->count() }} Reviews</a>
+                            </span>
+                        </div>
+                        
+                    </div>
+                    <div class="u-s-m-b-15">
+                        <div class="pd-detail__inline">
+                            <span class="pd-detail__stock">{{ $product->stock }} in stock</span>
+                            @if($product->sizes->sum('quantity') <= 2)
+                            <span class="pd-detail__left">Only {{ $product->stock }} left</span>
+                        @endif
+                        </div>
+                    </div>
+                    <div class="u-s-m-b-15">
+                        <span class="pd-detail__preview-desc">{{ Str::limit($product->description, 150) }}</span>
+                    </div>
+                    <div class="u-s-m-b-15">
+                        <span class="pd-detail__label u-s-m-b-8">Available Colors:</span>
+                        <div class="pd-detail__color">
+                                                       @foreach($product->sizes->unique('colorId') as $size)
+                                <div class="color-box" style="background-color: {{ $size->color->hexcode }};"></div>
+                            @endforeach
+                        </div>
+                    </div>
+                    
+                    <div class="u-s-m-b-15">
+                        <span class="pd-detail__label u-s-m-b-8">Available Sizes:</span>
+                        <div class="pd-detail__sizes">
+                            @foreach($product->sizes as $size)
+                                <span class="size-option">{{ $size->size }}</span>
+                            @endforeach
+                        </div>
+                    </div>
+                    
+                    <!-- Add to Cart Section -->
+                    <div class="u-s-m-b-15">
+                        <form class="pd-detail__form" method="POST" action="{{ route('cart.add') }}">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <input type="hidden" name="quantity" value="1">
+                            <div class="pd-detail-inline-2">
+                                <div class="u-s-m-b-15">
+                                    <button type="submit" class="btn btn--e-brand-b-2">Add to Cart</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="u-s-m-b-15">
+                        <span class="pd-detail__label u-s-m-b-8">Product Policy:</span>
+                        <ul class="pd-detail__policy-list">
+                            <li><i class="fas fa-check-circle u-s-m-r-8"></i> <span>Buyer Protection.</span></li>
+                            <li><i class="fas fa-check-circle u-s-m-r-8"></i> <span>Full Refund if you don't receive your order.</span></li>
+                            <li><i class="fas fa-check-circle u-s-m-r-8"></i> <span>Returns accepted if product not as described.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--====== Product Detail Tab ======-->
@@ -195,13 +257,9 @@
 
                                 <a class="nav-link active" data-toggle="tab" href="#pd-desc">DESCRIPTION</a></li>
                             <li class="nav-item">
-
-                                <a class="nav-link" data-toggle="tab" href="#pd-tag">TAGS</a></li>
-                            <li class="nav-item">
-
                                 <a class="nav-link" id="view-review" data-toggle="tab" href="#pd-rev">REVIEWS
 
-                                    <span>(23)</span></a></li>
+                                    <span>({{ $product->ratings->count()}}) </span></a></li>
                         </ul>
                     </div>
                     <div class="tab-content">
@@ -210,91 +268,21 @@
                         <div class="tab-pane fade show active" id="pd-desc">
                             <div class="pd-tab__desc">
                                 <div class="u-s-m-b-15">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <p>{{$product->description}}</p>
                                 </div>
-                                <div class="u-s-m-b-30"><iframe src="https://www.youtube.com/embed/qKqSBm07KZk" allowfullscreen></iframe></div>
                                 <div class="u-s-m-b-30">
                                     <ul>
                                         <li><i class="fas fa-check u-s-m-r-8"></i>
-
                                             <span>Buyer Protection.</span></li>
                                         <li><i class="fas fa-check u-s-m-r-8"></i>
-
                                             <span>Full Refund if you don't receive your order.</span></li>
                                         <li><i class="fas fa-check u-s-m-r-8"></i>
-
                                             <span>Returns accepted if product not as described.</span></li>
                                     </ul>
-                                </div>
-                                <div class="u-s-m-b-15">
-                                    <h4>PRODUCT INFORMATION</h4>
-                                </div>
-                                <div class="u-s-m-b-15">
-                                    <div class="pd-table gl-scroll">
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Main Material</td>
-                                                    <td>Cotton</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Color</td>
-                                                    <td>Green, Blue, Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sleeves</td>
-                                                    <td>Long Sleeve</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Top Fit</td>
-                                                    <td>Regular</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Print</td>
-                                                    <td>Not Printed</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Neck</td>
-                                                    <td>Round Neck</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Pieces Count</td>
-                                                    <td>1 Piece</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Occasion</td>
-                                                    <td>Casual</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Shipping Weight (kg)</td>
-                                                    <td>0.5</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!--====== End - Tab 1 ======-->
-
-
-                        <!--====== Tab 2 ======-->
-                        <div class="tab-pane" id="pd-tag">
-                            <div class="pd-tab__tag">
-                                <h2 class="u-s-m-b-15">ADD YOUR TAGS</h2>
-                                <div class="u-s-m-b-15">
-                                    <form>
-
-                                        <input class="input-text input-text--primary-style" type="text">
-
-                                        <button class="btn btn--e-brand-b-2" type="submit">ADD TAGS</button></form>
-                                </div>
-
-                                <span class="gl-text">Use spaces to separate tags. Use single quotes (') for phrases.</span>
-                            </div>
-                        </div>
-                        <!--====== End - Tab 2 ======-->
-
 
                         <!--====== Tab 3 ======-->
                         <div class="tab-pane" id="pd-rev">
@@ -302,9 +290,20 @@
                                 <div class="u-s-m-b-30">
                                     <div class="pd-tab__rev-score">
                                         <div class="u-s-m-b-8">
-                                            <h2>23 Reviews - 4.6 (Overall)</h2>
+                                            <h2>{{$product->ratings->avg('rating') }}</h2>
                                         </div>
-                                        <div class="gl-rating-style-2 u-s-m-b-8"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                        <div class="gl-rating-style-2 u-s-m-b-8">
+                                            @for ($i = 0; $i < 5; $i++)
+                                            <!-- Check for fractional star -->
+                                            @if ($i < floor($product->ratings->avg('rating')))
+                                                <i class="fas fa-star"></i>
+                                            @elseif ($i == floor($product->ratings->avg('rating')) && $product->ratings->avg('rating') - floor($product->ratings->avg('rating')) >= 0.5)
+                                                <i class="fas fa-star-half-alt"></i>
+                                            @else
+                                                <i class="far fa-star"></i>
+                                            @endif
+                                        @endfor
+                                        </div>
                                         <div class="u-s-m-b-8">
                                             <h4>We want to hear from you!</h4>
                                         </div>
@@ -316,7 +315,7 @@
                                     <form class="pd-tab__rev-f1">
                                         <div class="rev-f1__group">
                                             <div class="u-s-m-b-15">
-                                                <h2>23 Review(s) for Man Ruched Floral Applique Tee</h2>
+                                                <h2>{{ $product->ratings->count()}} Reviews for {{$product->productName}}</h2>
                                             </div>
                                             <div class="u-s-m-b-15">
 
@@ -326,40 +325,26 @@
                                                 </select></div>
                                         </div>
                                         <div class="rev-f1__review">
-                                            <div class="review-o u-s-m-b-15">
-                                                <div class="review-o__info u-s-m-b-8">
-
-                                                    <span class="review-o__name">John Doe</span>
-
-                                                    <span class="review-o__date">27 Feb 2018 10:57:43</span></div>
-                                                <div class="review-o__rating gl-rating-style u-s-m-b-8"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-
-                                                    <span>(4)</span></div>
-                                                <p class="review-o__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                            </div>
-                                            <div class="review-o u-s-m-b-15">
-                                                <div class="review-o__info u-s-m-b-8">
-
-                                                    <span class="review-o__name">John Doe</span>
-
-                                                    <span class="review-o__date">27 Feb 2018 10:57:43</span></div>
-                                                <div class="review-o__rating gl-rating-style u-s-m-b-8"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-
-                                                    <span>(4)</span></div>
-                                                <p class="review-o__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                            </div>
-                                            <div class="review-o u-s-m-b-15">
-                                                <div class="review-o__info u-s-m-b-8">
-
-                                                    <span class="review-o__name">John Doe</span>
-
-                                                    <span class="review-o__date">27 Feb 2018 10:57:43</span></div>
-                                                <div class="review-o__rating gl-rating-style u-s-m-b-8"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-
-                                                    <span>(4)</span></div>
-                                                <p class="review-o__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                            </div>
-                                        </div>
+                                         
+                                            @foreach ($product->ratings as $rating )
+                                                @foreach ($rating->users as $user )
+                                                    
+                                                <div class="review-o u-s-m-b-15">
+                                                    <div class="review-o__info u-s-m-b-8">
+    
+                                                        <span class="review-o__name">{{$user->name}}</span>
+    
+                                                        <span class="review-o__date">{{$rating->created_at}}</span></div>
+                                                    <div class="review-o__rating gl-rating-style u-s-m-b-8">@for ($i = 0; $i < $rating->rating; $i++)
+                                                        <i class="fas fa-star"></i>
+                                                    @endfor
+    
+                                                        <span>({{$rating->rating}})</span></div>
+                                                    <p class="review-o__text">{{$rating->description}}</p>
+                                                </div> 
+                                                @endforeach
+                                            @endforeach
+                                                                               </div>
                                     </form>
                                 </div>
                                 <div class="u-s-m-b-30">
@@ -534,22 +519,18 @@
                                                 </table>
                                             </div>
                                         </div>
+                                        <div>
+                                            <p class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="reviewer-name">Feedback</label>
+
+                                                <input name="" class="input-text input-text--primary-style" type="text" id="reviewer-name"></p>
+                                                                                  </div>
                                         <div class="rev-f2__group">
                                             <div class="u-s-m-b-15">
 
-                                                <label class="gl-label" for="reviewer-text">YOUR REVIEW *</label><textarea class="text-area text-area--primary-style" id="reviewer-text"></textarea></div>
-                                            <div>
-                                                <p class="u-s-m-b-30">
-
-                                                    <label class="gl-label" for="reviewer-name">NAME *</label>
-
-                                                    <input class="input-text input-text--primary-style" type="text" id="reviewer-name"></p>
-                                                <p class="u-s-m-b-30">
-
-                                                    <label class="gl-label" for="reviewer-email">EMAIL *</label>
-
-                                                    <input class="input-text input-text--primary-style" type="text" id="reviewer-email"></p>
-                                            </div>
+                                                <label class="gl-label" name='description' for="reviewer-text">YOUR REVIEW *</label><textarea name='description' class="text-area text-area--primary-style" id="reviewer-text" ></textarea></div>
+                                
                                         </div>
                                         <div>
 

@@ -34,29 +34,63 @@
                             </div>
                             <div>
                                 <div class="pd-detail__inline">
-                                    <span class="pd-detail__price">${{ $product->price }}</span>
-                                    @if($product->discount_price)
-                                        <span class="pd-detail__discount">({{ round((($product->price - $product->discount_price) / $product->price) * 100) }}% OFF)</span>
-                                        <del class="pd-detail__del">${{ $product->price }}</del>
+                                    <!-- Show the original product price -->
+                                    {{-- <div class="product-m__price">₹{{ number_format($product->price, 2) }}</div> --}}
+                                    
+                                    <!-- Show discounted price or original price -->
+                                    <span class="pd-detail__price">₹{{ number_format($product->price - ($product->price * $product->discount / 100), 2) }}</span>
+                                    
+                                    <!-- Show discount percentage if applicable -->
+                                    @if($product->discount)
+                                        <span class="pd-detail__discount">
+                                            ({{ $product->discount }}% OFF)
+                                        </span>
+                                        <!-- Show original price crossed out -->
+                                        <del class="pd-detail__del">₹{{ number_format($product->price, 2) }}</del>
                                     @endif
                                 </div>
+                                
                             </div>
                             <div class="u-s-m-b-15">
                                 <div class="pd-detail__rating gl-rating-style">
                                     @for ($i = 0; $i < 5; $i++)
-                                        <i class="{{ $i < round($product->ratings->avg('rating')) ? 'fas' : 'far' }} fa-star"></i>
+                                        <!-- Check for fractional star -->
+                                        @if ($i < floor($product->ratings->avg('rating')))
+                                            <i class="fas fa-star"></i>
+                                        @elseif ($i == floor($product->ratings->avg('rating')) && $product->ratings->avg('rating') - floor($product->ratings->avg('rating')) >= 0.5)
+                                            <i class="fas fa-star-half-alt"></i>
+                                        @else
+                                            <i class="far fa-star"></i>
+                                        @endif
                                     @endfor
                                     <span class="pd-detail__review u-s-m-l-4">
-                                        <a href="product-detail.html">{{ $product->ratings->count() }} Reviews</a>
+                                        <a data-click-scroll="#view-review">{{ $product->ratings->count() }} Reviews</a>
                                     </span>
                                 </div>
                             </div>
                             <div class="u-s-m-b-15">
                                 <div class="pd-detail__inline">
-                                    <span class="pd-detail__stock">{{ $product->stock }} in stock</span>
-                                    @if($product->stock <= 2)
+                                    <span class="pd-detail__stock">{{ $product->stock }} In stock</span>
+                                    @if($product->sizes->sum('quantity') <= 2)
                                         <span class="pd-detail__left">Only {{ $product->stock }} left</span>
                                     @endif
+                                </div>
+                            </div>
+                            <div class="u-s-m-b-15">
+                                <span class="pd-detail__label u-s-m-b-8">Available Colors:</span>
+                                <div class="pd-detail__color">
+                                                               @foreach($product->sizes->unique('colorId') as $size)
+                                        <div class="color-box" style="background-color: {{ $size->color->hexcode }};"></div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            
+                            <div class="u-s-m-b-15">
+                                <span class="pd-detail__label u-s-m-b-8">Available Sizes:</span>
+                                <div class="pd-detail__sizes">
+                                    @foreach($product->sizes as $size)
+                                        <span class="size-option">{{ $size->size }}</span>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="u-s-m-b-15">
@@ -66,8 +100,8 @@
                                 <div class="pd-detail__inline">
                                     <span class="pd-detail__click-wrap">
                                         <i class="far fa-heart u-s-m-r-6"></i>
-                                        <a href="#">Add to Wishlist</a>
-                                        <span class="pd-detail__click-count">(222)</span>
+                                        <a href="{{ URL::to('/') }}/wishlist/add/{{ $product->id }}">Add to Wishlist</a>
+                                       
                                     </span>
                                 </div>
                             </div>

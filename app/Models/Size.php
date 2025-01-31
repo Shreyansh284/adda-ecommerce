@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Size extends Model
 {
     //
+    public function color()
+    {
+        return $this->belongsTo(Color::class,'colorId','id');
+    }
+
 }

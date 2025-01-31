@@ -12,4 +12,9 @@ class Rating extends Model
     {
         return $this->belongsTo(Product::class);
     }
+    public function users()
+    {
+        return $this->hasMany(User::class,
+        'id','userId');
+    }
 }

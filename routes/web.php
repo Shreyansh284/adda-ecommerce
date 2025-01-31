@@ -145,7 +145,7 @@ Route::middleware(['user:user'])->group(function () {
     // Route::get('/about', [HomeController::class, 'about']);
     // Route::get('/contact', [HomeController::class, 'contact']);
     // Route::get('/shop', [HomeController::class, 'shop']);
-    Route::get('/productDetails', [HomeController::class, 'productDetails'])->name('product.detail');
+    Route::get('/productDetails/{id}', [HomeController::class, 'productDetails'])->name('product.detail');
     Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 
 

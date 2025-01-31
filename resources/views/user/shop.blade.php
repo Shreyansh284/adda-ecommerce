@@ -44,7 +44,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="product-detail.html">
+                                                    href="{{route('product.detail',$product->id)}}">
 
                                                     <img class="aspect__img"
                                                         src="{{ asset($product->images->first()->image) }}"
@@ -67,13 +67,40 @@
                                                         <a href="product-detail.html">{{ $product->productName }}</a>
                                                     </div>
                                                     <div class="product-m__rating gl-rating-style">
-                                                        @foreach ($product->ratings as $rating)
-                                                            <i class="fas fa-star"></i>
-                                                        @endforeach
-                                                        <span
-                                                            class="product-m__review">({{ $product->ratings->count() }})</span>
+                                                        <div class="pd-detail__rating gl-rating-style">
+                                                            @for ($i = 0; $i < 5; $i++)
+                                                                <!-- Check for fractional star -->
+                                                                @if ($i < floor($product->ratings->avg('rating')))
+                                                                    <i class="fas fa-star"></i>
+                                                                @elseif ($i == floor($product->ratings->avg('rating')) && $product->ratings->avg('rating') - floor($product->ratings->avg('rating')) >= 0.5)
+                                                                    <i class="fas fa-star-half-alt"></i>
+                                                                @else
+                                                                    <i class="far fa-star"></i>
+                                                                @endif
+                                                            @endfor
+                                                            <span class="pd-detail__review u-s-m-l-4">
+                                                                <a data-click-scroll="#view-review">{{ $product->ratings->count() }} Reviews</a>
+                                                            </span>
+                                                        </div>
+                                                   
                                                     </div>
-                                                    <div class="product-m__price">₹{{ $product->price }}</div>
+                                                    <div class="pd-detail__inline">
+                                                        <!-- Show the original product price -->
+                                                        {{-- <div class="product-m__price">₹{{ number_format($product->price, 2) }}</div> --}}
+                                                        
+                                                        <!-- Show discounted price or original price -->
+                                                        <span class="product-m__price">₹{{ number_format($product->price - ($product->price * $product->discount / 100), 2) }}</span>
+                                                        
+                                                        <!-- Show discount percentage if applicable -->
+                                                        @if($product->discount)
+                                                            <span class="product-m__price">
+                                                                ({{ $product->discount }}% OFF)
+                                                            </span>
+                                                            <!-- Show original price crossed out -->
+                                                            <del class="pd-detail__del">₹{{ number_format($product->price, 2) }}</del>
+                                                        @endif
+                                                    </div>
+                                                    
                                                     <div class="product-m__hover">
                                                         <div class="product-m__preview-description">
 
