@@ -29,11 +29,10 @@ Route::get('/contact', [HomeController::class, 'contact']);
 Route::get('/shop', [HomeController::class, 'shop']);
 Route::get('/productDetails', [HomeController::class, 'productDetails']);
 
-Route::controller(HomeController::class)->group(function()
-{
+Route::controller(HomeController::class)->group(function () {
 
-    Route::get('/auth/googleLogin','googleLogin')->name('auth.googleLogin');
-    Route::get('/auth/google/call-back','googleAuthentication');
+    Route::get('/auth/googleLogin', 'googleLogin')->name('auth.googleLogin');
+    Route::get('/auth/google/call-back', 'googleAuthentication');
 });
 
 Route::middleware(['admin:admin'])->group(function () {
@@ -160,7 +159,8 @@ Route::middleware(['user:user'])->group(function () {
     Route::get('/wishlist/clear', [HomeController::class, 'clearWishlist']);
     Route::post('/logout', [HomeController::class, 'logout'])->name('logout');
 
-    
+    Route::post('/submit-review', [RatingController::class, 'store'])->name('review.store');
+
     Route::get('/get/states', [HomeController::class, 'getStates'])->name('get.states');
     Route::get('/get/cities/{state_id}', [HomeController::class, 'getCities'])->name('get.cities');
     Route::post('/payOnline', [HomeController::class, 'payOnline'])->name('payOnline');
