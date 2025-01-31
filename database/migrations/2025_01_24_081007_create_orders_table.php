@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('orderId')->nullable();
             $table->foreignId('userId')->constrained(
                 table: 'users', indexName: 'userIdForOrder'
             );
@@ -25,7 +26,7 @@ return new class extends Migration
             $table->enum('paymentMode', ['online', 'offline']);
             $table->double('price');
             $table->bigInteger('quantity');
-            
+            $table->string("address")->nullable();
             $table->timestamps();
         });
     }

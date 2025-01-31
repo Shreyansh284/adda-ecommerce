@@ -1,495 +1,475 @@
 @extends('user.master')
+
+@section('css')
+    <style>
+        .product-image {
+            max-width: 100%;
+            /* Prevent image overflow */
+            max-height: 100%;
+            /* Maintain height limits */
+            width: auto;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            /* Maintain a square aspect ratio */
+            object-fit: contain;
+            /* Show the entire image without distortion */
+            border-radius: 8px;
+            /* Optional: rounded corners */
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+            /* Optional: subtle shadow */
+        }
+
+        .product-image-container {
+            width: 70px;
+            height: 70px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f8f8;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.875rem;
+            margin-top: 5px;
+        }
+
+        /* Common Button Styling for Razorpay and COD */
+        .payment-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        /* COD Button */
+        .payment-button--cod {
+            background-color: #28a745;
+        }
+
+        .payment-button--cod:hover {
+            background-color: #218838;
+        }
+
+        /* Razorpay Payment Button */
+        .razorpay-payment-button {
+            background-color: #f37254;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .razorpay-payment-button:hover {
+            background-color: #d35440;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .razorpay-payment-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(243, 114, 84, 0.4);
+        }
+    </style>
+@endsection
+
 @section('content')
-            <!--====== Section 1 ======-->
-            <div class="u-s-p-y-60">
+    <!--====== Section 1 ======-->
+    <div class="u-s-p-y-60">
 
-                <!--====== Section Content ======-->
-                <div class="section__content">
-                    <div class="container">
-                        <div class="breadcrumb">
-                            <div class="breadcrumb__wrap">
-                                <ul class="breadcrumb__list">
-                                    <li class="has-separator">
+        <!--====== Section Content ======-->
+        <div class="section__content">
+            <div class="container">
+                <div class="breadcrumb">
+                    <div class="breadcrumb__wrap">
+                        <ul class="breadcrumb__list">
+                            <li class="has-separator">
 
-                                        <a href="index.html">Home</a></li>
-                                    <li class="is-marked">
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li class="is-marked">
 
-                                        <a href="checkout.html">Checkout</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                                <a href="checkout.html">Checkout</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <!--====== End - Section 1 ======-->
+        </div>
+    </div>
+    <!--====== End - Section 1 ======-->
 
 
-            <!--====== Section 2 ======-->
-            <div class="u-s-p-b-60">
 
-                <!--====== Section Content ======-->
-                <div class="section__content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div id="checkout-msg-group">
-                                    <div class="msg u-s-m-b-30">
 
-                                        <span class="msg__text">Returning customer?
 
-                                            <a class="gl-link" href="#return-customer" data-toggle="collapse">Click here to login</a></span>
-                                        <div class="collapse" id="return-customer" data-parent="#checkout-msg-group">
-                                            <div class="l-f u-s-m-b-16">
+    <!--====== Section 3 ======-->
+    <div class="u-s-p-b-60">
 
-                                                <span class="gl-text u-s-m-b-16">If you have an account with us, please log in.</span>
-                                                <form class="l-f__form">
-                                                    <div class="gl-inline">
-                                                        <div class="u-s-m-b-15">
+        <!--====== Section Content ======-->
+        <div class="section__content">
+            <div class="container">
+                <div class="checkout-f">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h1 class="checkout-f__h1">DELIVERY INFORMATION</h1>
+                            <form class="checkout-f__delivery" id="checkout-form">
+                                <div class="u-s-m-b-30">
 
-                                                            <label class="gl-label" for="login-email">E-MAIL *</label>
-
-                                                            <input class="input-text input-text--primary-style" type="text" id="login-email" placeholder="Enter E-mail"></div>
-                                                        <div class="u-s-m-b-15">
-
-                                                            <label class="gl-label" for="login-password">PASSWORD *</label>
-
-                                                            <input class="input-text input-text--primary-style" type="text" id="login-password" placeholder="Enter Password"></div>
-                                                    </div>
-                                                    <div class="gl-inline">
-                                                        <div class="u-s-m-b-15">
-
-                                                            <button class="btn btn--e-transparent-brand-b-2" type="submit">LOGIN</button></div>
-                                                        <div class="u-s-m-b-15">
-
-                                                            <a class="gl-link" href="lost-password.html">Lost Your Password?</a></div>
-                                                    </div>
-
-                                                    <!--====== Check Box ======-->
-                                                    <div class="check-box">
-
-                                                        <input type="checkbox" id="remember-me">
-                                                        <div class="check-box__state check-box__state--primary">
-
-                                                            <label class="check-box__label" for="remember-me">Remember Me</label></div>
-                                                    </div>
-                                                    <!--====== End - Check Box ======-->
-                                                </form>
-                                            </div>
+                                    <!--====== First Name, Last Name ======-->
+                                    <div class="gl-inline">
+                                        <div class="u-s-m-b-15">
+                                            <label class="gl-label" for="billing-fname">FIRST NAME *</label>
+                                            <input class="input-text input-text--primary-style" type="text"
+                                                id="billing-fname" data-bill="" required>
+                                        </div>
+                                        <div class="u-s-m-b-15">
+                                            <label class="gl-label" for="billing-lname">LAST NAME *</label>
+                                            <input class="input-text input-text--primary-style" type="text"
+                                                id="billing-lname" data-bill="" required>
                                         </div>
                                     </div>
-                                    <div class="msg">
 
-                                        <span class="msg__text">Have a coupon?
+                                    <!--====== E-MAIL ======-->
+                                    <div class="u-s-m-b-15">
+                                        <label class="gl-label" for="billing-email">E-MAIL *</label>
+                                        <input class="input-text input-text--primary-style" type="email"
+                                            id="billing-email" data-bill="" required>
+                                    </div>
 
-                                            <a class="gl-link" href="#have-coupon" data-toggle="collapse">Click Here to enter your code</a></span>
-                                        <div class="collapse" id="have-coupon" data-parent="#checkout-msg-group">
-                                            <div class="c-f u-s-m-b-16">
+                                    <!--====== PHONE ======-->
+                                    <div class="u-s-m-b-15">
+                                        <label class="gl-label" for="billing-phone">PHONE *</label>
+                                        <input class="input-text input-text--primary-style" type="text"
+                                            id="billing-phone" data-bill="" required minlength="10" maxlength="10">
+                                    </div>
 
-                                                <span class="gl-text u-s-m-b-16">Enter your coupon code if you have one.</span>
-                                                <form class="c-f__form">
-                                                    <div class="u-s-m-b-16">
-                                                        <div class="u-s-m-b-15">
 
-                                                            <label for="coupon"></label>
+                                    <!--====== STATE/PROVINCE ======-->
+                                    <div class="u-s-m-b-15">
+                                        <label class="gl-label" for="billing-state">STATE *</label>
+                                        <select class="select-box select-box--primary-style" id="billing-state"
+                                            data-bill="" required>
 
-                                                            <input class="input-text input-text--primary-style" type="text" id="coupon" placeholder="Coupon Code"></div>
-                                                        <div class="u-s-m-b-15">
+                                        </select>
+                                    </div>
+                                    <!--====== Town / City ======-->
+                                    <div class="u-s-m-b-15">
+                                        <label class="gl-label" for="billing-town-city">CITY *</label>
+                                        <select class="select-box select-box--primary-style" id="billing-town-city"
+                                            data-bill="" required>
+                                            <option selected value="">Choose Town/City</option>
+                                        </select>
+                                    </div>
 
-                                                            <button class="btn btn--e-transparent-brand-b-2" type="submit">APPLY</button></div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
+                                    <!--====== Village (Optional) ======-->
+                                    <div class="u-s-m-b-15">
+                                        <label class="gl-label" for="billing-village">VILLAGE (Optional)</label>
+                                        <input class="input-text input-text--primary-style" type="text"
+                                            id="billing-village" placeholder="Enter village name (if applicable)">
+                                    </div>
+
+                                    <!--====== Street Address ======-->
+                                    <div class="u-s-m-b-15">
+                                        <label class="gl-label" for="billing-street">STREET ADDRESS *</label>
+                                        <input class="input-text input-text--primary-style" type="text"
+                                            id="billing-street" placeholder="House name and street name" data-bill=""
+                                            required>
+                                    </div>
+                                    <div class="u-s-m-b-15">
+                                        <label for="billing-street-optional"></label>
+                                        <input class="input-text input-text--primary-style" type="text"
+                                            id="billing-street-optional" placeholder="Apartment, suite unit etc. (optional)"
+                                            data-bill="">
+                                    </div>
+
+
+                                    <!--====== ZIP/POSTAL ======-->
+                                    <div class="u-s-m-b-15">
+                                        <label class="gl-label" for="billing-zip">ZIP/POSTAL CODE *</label>
+                                        <input class="input-text input-text--primary-style" type="text" id="billing-zip"
+                                            placeholder="Zip/Postal Code" data-bill="" required>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <div>
+                                        <button class="btn btn--e-transparent-brand-b-2" type="submit">SAVE</button>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    </div>
-                </div>
-                <!--====== End - Section Content ======-->
-            </div>
-            <!--====== End - Section 2 ======-->
+                        <div class="col-lg-6">
+                            <h1 class="checkout-f__h1">ORDER SUMMARY</h1>
 
-
-            <!--====== Section 3 ======-->
-            <div class="u-s-p-b-60">
-
-                <!--====== Section Content ======-->
-                <div class="section__content">
-                    <div class="container">
-                        <div class="checkout-f">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <h1 class="checkout-f__h1">DELIVERY INFORMATION</h1>
-                                    <form class="checkout-f__delivery">
-                                        <div class="u-s-m-b-30">
-                                            <div class="u-s-m-b-15">
-
-                                                <!--====== Check Box ======-->
-                                                <div class="check-box">
-
-                                                    <input type="checkbox" id="get-address">
-                                                    <div class="check-box__state check-box__state--primary">
-
-                                                        <label class="check-box__label" for="get-address">Use default shipping and billing address from account</label></div>
-                                                </div>
-                                                <!--====== End - Check Box ======-->
-                                            </div>
-
-                                            <!--====== First Name, Last Name ======-->
-                                            <div class="gl-inline">
-                                                <div class="u-s-m-b-15">
-
-                                                    <label class="gl-label" for="billing-fname">FIRST NAME *</label>
-
-                                                    <input class="input-text input-text--primary-style" type="text" id="billing-fname" data-bill=""></div>
-                                                <div class="u-s-m-b-15">
-
-                                                    <label class="gl-label" for="billing-lname">LAST NAME *</label>
-
-                                                    <input class="input-text input-text--primary-style" type="text" id="billing-lname" data-bill=""></div>
-                                            </div>
-                                            <!--====== End - First Name, Last Name ======-->
-
-
-                                            <!--====== E-MAIL ======-->
-                                            <div class="u-s-m-b-15">
-
-                                                <label class="gl-label" for="billing-email">E-MAIL *</label>
-
-                                                <input class="input-text input-text--primary-style" type="text" id="billing-email" data-bill=""></div>
-                                            <!--====== End - E-MAIL ======-->
-
-
-                                            <!--====== PHONE ======-->
-                                            <div class="u-s-m-b-15">
-
-                                                <label class="gl-label" for="billing-phone">PHONE *</label>
-
-                                                <input class="input-text input-text--primary-style" type="text" id="billing-phone" data-bill=""></div>
-                                            <!--====== End - PHONE ======-->
-
-
-                                            <!--====== Street Address ======-->
-                                            <div class="u-s-m-b-15">
-
-                                                <label class="gl-label" for="billing-street">STREET ADDRESS *</label>
-
-                                                <input class="input-text input-text--primary-style" type="text" id="billing-street" placeholder="House name and street name" data-bill=""></div>
-                                            <div class="u-s-m-b-15">
-
-                                                <label for="billing-street-optional"></label>
-
-                                                <input class="input-text input-text--primary-style" type="text" id="billing-street-optional" placeholder="Apartment, suite unit etc. (optional)" data-bill=""></div>
-                                            <!--====== End - Street Address ======-->
-
-
-                                            <!--====== Country ======-->
-                                            <div class="u-s-m-b-15">
-
-                                                <!--====== Select Box ======-->
-
-                                                <label class="gl-label" for="billing-country">COUNTRY *</label><select class="select-box select-box--primary-style" id="billing-country" data-bill="">
-                                                    <option selected value="">Choose Country</option>
-                                                    <option value="uae">United Arab Emirate (UAE)</option>
-                                                    <option value="uk">United Kingdom (UK)</option>
-                                                    <option value="us">United States (US)</option>
-                                                </select>
-                                                <!--====== End - Select Box ======-->
-                                            </div>
-                                            <!--====== End - Country ======-->
-
-
-                                            <!--====== Town / City ======-->
-                                            <div class="u-s-m-b-15">
-
-                                                <label class="gl-label" for="billing-town-city">TOWN/CITY *</label>
-
-                                                <input class="input-text input-text--primary-style" type="text" id="billing-town-city" data-bill=""></div>
-                                            <!--====== End - Town / City ======-->
-
-
-                                            <!--====== STATE/PROVINCE ======-->
-                                            <div class="u-s-m-b-15">
-
-                                                <!--====== Select Box ======-->
-
-                                                <label class="gl-label" for="billing-state">STATE/PROVINCE *</label><select class="select-box select-box--primary-style" id="billing-state" data-bill="">
-                                                    <option selected value="">Choose State/Province</option>
-                                                    <option value="al">Alabama</option>
-                                                    <option value="al">Alaska</option>
-                                                    <option value="ny">New York</option>
-                                                </select>
-                                                <!--====== End - Select Box ======-->
-                                            </div>
-                                            <!--====== End - STATE/PROVINCE ======-->
-
-
-                                            <!--====== ZIP/POSTAL ======-->
-                                            <div class="u-s-m-b-15">
-
-                                                <label class="gl-label" for="billing-zip">ZIP/POSTAL CODE *</label>
-
-                                                <input class="input-text input-text--primary-style" type="text" id="billing-zip" placeholder="Zip/Postal Code" data-bill=""></div>
-                                            <!--====== End - ZIP/POSTAL ======-->
-                                            <div class="u-s-m-b-10">
-
-                                                <!--====== Check Box ======-->
-                                                <div class="check-box">
-
-                                                    <input type="checkbox" id="make-default-address" data-bill="">
-                                                    <div class="check-box__state check-box__state--primary">
-
-                                                        <label class="check-box__label" for="make-default-address">Make default shipping and billing address</label></div>
-                                                </div>
-                                                <!--====== End - Check Box ======-->
-                                            </div>
-                                            <div class="u-s-m-b-10">
-
-                                                <a class="gl-link" href="#create-account" data-toggle="collapse">Want to create a new account?</a></div>
-                                            <div class="collapse u-s-m-b-15" id="create-account">
-
-                                                <span class="gl-text u-s-m-b-15">Create an account by entering the information below. If you are a returning customer please login at the top of the page.</span>
-                                                <div>
-
-                                                    <label class="gl-label" for="reg-password">Account Password *</label>
-
-                                                    <input class="input-text input-text--primary-style" type="text" data-bill id="reg-password"></div>
-                                            </div>
-                                            <div class="u-s-m-b-10">
-
-                                                <label class="gl-label" for="order-note">ORDER NOTE</label><textarea class="text-area text-area--primary-style" id="order-note"></textarea></div>
-                                            <div>
-
-                                                <button class="btn btn--e-transparent-brand-b-2" type="submit">SAVE</button></div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="col-lg-6">
-                                    <h1 class="checkout-f__h1">ORDER SUMMARY</h1>
-
-                                    <!--====== Order Summary ======-->
-                                    <div class="o-summary">
-                                        <div class="o-summary__section u-s-m-b-30">
+                            <!--====== Order Summary ======-->
+                            <div class="o-summary">
+                                <div class="o-summary__section u-s-m-b-30">
+                                    <div class="o-summary__section u-s-m-b-30">
+                                        @foreach ($cartItems as $cartItem)
                                             <div class="o-summary__item-wrap gl-scroll">
-                                                <div class="o-card">
-                                                    <div class="o-card__flex">
-                                                        <div class="o-card__img-wrap">
+                                                <div class="o-card__flex">
+                                                    <div class="o-card__img-wrap">
+                                                        <div class="product-image-container">
+                                                            @if ($cartItem->product->images->isNotEmpty())
+                                                                <img class="product-image"
+                                                                    src="{{ asset($cartItem->product->images->first()->image) }}"
+                                                                    alt="Product Image">
+                                                            @else
+                                                                <img class="product-image"
+                                                                    src="{{ asset('default-image.jpg') }}"
+                                                                    alt="Default Image">
+                                                            @endif
+                                                        </div>
 
-                                                            <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt=""></div>
-                                                        <div class="o-card__info-wrap">
-
-                                                            <span class="o-card__name">
-
-                                                                <a href="product-detail.html">Yellow Wireless Headphone</a></span>
-
-                                                            <span class="o-card__quantity">Quantity x 1</span>
-
-                                                            <span class="o-card__price">$150.00</span></div>
                                                     </div>
-
-                                                    <a class="o-card__del far fa-trash-alt"></a>
-                                                </div>
-                                                <div class="o-card">
-                                                    <div class="o-card__flex">
-                                                        <div class="o-card__img-wrap">
-
-                                                            <img class="u-img-fluid" src="images/product/electronic/product18.jpg" alt=""></div>
-                                                        <div class="o-card__info-wrap">
-
-                                                            <span class="o-card__name">
-
-                                                                <a href="product-detail.html">Nikon DSLR Camera 4k</a></span>
-
-                                                            <span class="o-card__quantity">Quantity x 1</span>
-
-                                                            <span class="o-card__price">$150.00</span></div>
+                                                    <div class="o-card__info-wrap">
+                                                        <span class="o-card__name">
+                                                            <a href="#">{{ $cartItem->product->productName }}</a>
+                                                        </span>
+                                                        <span class="o-card__quantity">Quantity x
+                                                            {{ $cartItem->quantity }}</span>
+                                                        <span class="o-card__price">${{ $cartItem->price }}</span>
                                                     </div>
-
-                                                    <a class="o-card__del far fa-trash-alt"></a>
-                                                </div>
-                                                <div class="o-card">
-                                                    <div class="o-card__flex">
-                                                        <div class="o-card__img-wrap">
-
-                                                            <img class="u-img-fluid" src="images/product/women/product8.jpg" alt=""></div>
-                                                        <div class="o-card__info-wrap">
-
-                                                            <span class="o-card__name">
-
-                                                                <a href="product-detail.html">New Dress D Nice Elegant</a></span>
-
-                                                            <span class="o-card__quantity">Quantity x 1</span>
-
-                                                            <span class="o-card__price">$150.00</span></div>
-                                                    </div>
-
-                                                    <a class="o-card__del far fa-trash-alt"></a>
-                                                </div>
-                                                <div class="o-card">
-                                                    <div class="o-card__flex">
-                                                        <div class="o-card__img-wrap">
-
-                                                            <img class="u-img-fluid" src="images/product/men/product8.jpg" alt=""></div>
-                                                        <div class="o-card__info-wrap">
-
-                                                            <span class="o-card__name">
-
-                                                                <a href="product-detail.html">New Fashion D Nice Elegant</a></span>
-
-                                                            <span class="o-card__quantity">Quantity x 1</span>
-
-                                                            <span class="o-card__price">$150.00</span></div>
-                                                    </div>
-
-                                                    <a class="o-card__del far fa-trash-alt"></a>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="o-summary__section u-s-m-b-30">
-                                            <div class="o-summary__box">
-                                                <h1 class="checkout-f__h1">SHIPPING & BILLING</h1>
-                                                <div class="ship-b">
-
-                                                    <span class="ship-b__text">Ship to:</span>
-                                                    <div class="ship-b__box u-s-m-b-10">
-                                                        <p class="ship-b__p">4247 Ashford Drive Virginia VA-20006 USA (+0) 900901904</p>
-
-                                                        <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal" data-modal-id="#edit-ship-address">Edit</a>
-                                                    </div>
-                                                    <div class="ship-b__box">
-
-                                                        <span class="ship-b__text">Bill to default billing address</span>
-
-                                                        <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal" data-modal-id="#edit-ship-address">Edit</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="o-summary__section u-s-m-b-30">
-                                            <div class="o-summary__box">
-                                                <table class="o-summary__table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>SHIPPING</td>
-                                                            <td>$4.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>TAX</td>
-                                                            <td>$0.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>SUBTOTAL</td>
-                                                            <td>$379.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>GRAND TOTAL</td>
-                                                            <td>$379.00</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="o-summary__section u-s-m-b-30">
-                                            <div class="o-summary__box">
-                                                <h1 class="checkout-f__h1">PAYMENT INFORMATION</h1>
-                                                <form class="checkout-f__payment">
-                                                    <div class="u-s-m-b-10">
-
-                                                        <!--====== Radio Box ======-->
-                                                        <div class="radio-box">
-
-                                                            <input type="radio" id="cash-on-delivery" name="payment">
-                                                            <div class="radio-box__state radio-box__state--primary">
-
-                                                                <label class="radio-box__label" for="cash-on-delivery">Cash on Delivery</label></div>
-                                                        </div>
-                                                        <!--====== End - Radio Box ======-->
-
-                                                        <span class="gl-text u-s-m-t-6">Pay Upon Cash on delivery. (This service is only available for some countries)</span>
-                                                    </div>
-                                                    <div class="u-s-m-b-10">
-
-                                                        <!--====== Radio Box ======-->
-                                                        <div class="radio-box">
-
-                                                            <input type="radio" id="direct-bank-transfer" name="payment">
-                                                            <div class="radio-box__state radio-box__state--primary">
-
-                                                                <label class="radio-box__label" for="direct-bank-transfer">Direct Bank Transfer</label></div>
-                                                        </div>
-                                                        <!--====== End - Radio Box ======-->
-
-                                                        <span class="gl-text u-s-m-t-6">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</span>
-                                                    </div>
-                                                    <div class="u-s-m-b-10">
-
-                                                        <!--====== Radio Box ======-->
-                                                        <div class="radio-box">
-
-                                                            <input type="radio" id="pay-with-check" name="payment">
-                                                            <div class="radio-box__state radio-box__state--primary">
-
-                                                                <label class="radio-box__label" for="pay-with-check">Pay With Check</label></div>
-                                                        </div>
-                                                        <!--====== End - Radio Box ======-->
-
-                                                        <span class="gl-text u-s-m-t-6">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</span>
-                                                    </div>
-                                                    <div class="u-s-m-b-10">
-
-                                                        <!--====== Radio Box ======-->
-                                                        <div class="radio-box">
-
-                                                            <input type="radio" id="pay-with-card" name="payment">
-                                                            <div class="radio-box__state radio-box__state--primary">
-
-                                                                <label class="radio-box__label" for="pay-with-card">Pay With Credit / Debit Card</label></div>
-                                                        </div>
-                                                        <!--====== End - Radio Box ======-->
-
-                                                        <span class="gl-text u-s-m-t-6">International Credit Cards must be eligible for use within the United States.</span>
-                                                    </div>
-                                                    <div class="u-s-m-b-10">
-
-                                                        <!--====== Radio Box ======-->
-                                                        <div class="radio-box">
-
-                                                            <input type="radio" id="pay-pal" name="payment">
-                                                            <div class="radio-box__state radio-box__state--primary">
-
-                                                                <label class="radio-box__label" for="pay-pal">Pay Pal</label></div>
-                                                        </div>
-                                                        <!--====== End - Radio Box ======-->
-
-                                                        <span class="gl-text u-s-m-t-6">When you click "Place Order" below we'll take you to Paypal's site to set up your billing information.</span>
-                                                    </div>
-                                                    <div class="u-s-m-b-15">
-
-                                                        <!--====== Check Box ======-->
-                                                        <div class="check-box">
-
-                                                            <input type="checkbox" id="term-and-condition">
-                                                            <div class="check-box__state check-box__state--primary">
-
-                                                                <label class="check-box__label" for="term-and-condition">I consent to the</label></div>
-                                                        </div>
-                                                        <!--====== End - Check Box ======-->
-
-                                                        <a class="gl-link">Terms of Service.</a>
-                                                    </div>
-                                                    <div>
-
-                                                        <button class="btn btn--e-brand-b-2" type="submit">PLACE ORDER</button></div>
-                                                </form>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
-                                    <!--====== End - Order Summary ======-->
+
                                 </div>
+
+                                <div class="o-summary__section u-s-m-b-30">
+                                    <div class="o-summary__box">
+                                        <table class="o-summary__table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>SHIPPING</td>
+                                                    <td>₹{{ number_format($shipping, 2) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>TAX (18%)</td>
+                                                    <td>₹{{ number_format($tax, 2) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SUBTOTAL</td>
+                                                    <td>₹{{ number_format($subtotal, 2) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>GRAND TOTAL</td>
+                                                    <td>₹{{ number_format($grandTotal, 2) }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="o-summary__section u-s-m-b-30 payment-section" style="display: none;">
+                                    <div class="o-summary__box">
+                                        <h1 class="checkout-f__h1">PAYMENT INFORMATION</h1>
+                                        <div class="u-s-m-b-10">
+                                            <!-- COD Button -->
+                                            <div class="button-container">
+                                               <a href="{{ route('payOffline') }}"> <button type="button" id="cash-on-delivery-btn"
+                                                    class="payment-button payment-button--cod">
+                                                    Cash on Delivery
+                                                </button></a>
+                                            </div>
+                                        </div>
+
+                                        <div class="u-s-m-b-10">
+                                            <!-- Online Payment Button -->
+                                            <form id="paymentForm"
+                                                action="
+                                            {{ route('payOnline') }}"
+                                                method="POST">
+                                                <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="rzp_test_aRaPVVcfmtYbxs"
+                                                    data-amount="{{ Session('orderTotal') }}" data-currency="INR" data-order_id="{{ Session('orderId') }}"
+                                                    data-buttontext="Online payment" data-name="{{ Session('product_name') }}"
+                                                    data-description="{{ Session('product_desc') }}" data-theme.color="#F37254"></script>
+                                                <input type="hidden" custom="Hidden Element" name="hidden">
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
                             </div>
+                            <!--====== End - Order Summary ======-->
                         </div>
                     </div>
                 </div>
-                <!--====== End - Section Content ======-->
             </div>
+        </div>
+        <!--====== End - Section Content ======-->
+    </div>
+@endsection
+
+
+@section('script')
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery Validation Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#checkout-form").validate({
+                rules: {
+                    'billing-fname': {
+                        required: true,
+                        minlength: 2
+                    },
+                    'billing-lname': {
+                        required: true,
+                        minlength: 2
+                    },
+                    'billing-email': {
+                        required: true,
+                        email: true
+                    },
+                    'billing-phone': {
+                        required: true,
+                        minlength: 10,
+                        digits: true
+                    },
+                    'billing-street': {
+                        required: true
+                    },
+                    'billing-town-city': {
+                        required: true
+                    },
+                    'billing-state': {
+                        required: true
+                    },
+                    'billing-zip': {
+                        required: true,
+                        minlength: 5,
+                        digits: true
+                    }
+                },
+                messages: {
+                    'billing-fname': {
+                        required: "Please enter your first name",
+                        minlength: "Your first name must be at least 2 characters long"
+                    },
+                    'billing-lname': {
+                        required: "Please enter your last name",
+                        minlength: "Your last name must be at least 2 characters long"
+                    },
+                    'billing-email': {
+                        required: "Please enter your email address",
+                        email: "Please enter a valid email address"
+                    },
+                    'billing-phone': {
+                        required: "Please enter your phone number",
+                        minlength: "Your phone number must be at least 10 digits",
+                        digits: "Please enter a valid phone number"
+                    },
+                    'billing-street': {
+                        required: "Please enter your street address"
+                    },
+                    'billing-town-city': {
+                        required: "Please choose a town/city"
+                    },
+                    'billing-state': {
+                        required: "Please choose a state/province"
+                    },
+                    'billing-zip': {
+                        required: "Please enter your ZIP code",
+                        minlength: "Your ZIP code must be at least 5 digits",
+                        digits: "Please enter a valid ZIP code"
+                    }
+                },
+                errorPlacement: function(error, element) {
+                    error.insertAfter(element);
+                },
+                submitHandler: function(form) {
+                    // Show payment section on successful validation
+                    $('.payment-section').slideDown();
+                }
+            });
+
+            $('#checkout-form').on('submit', function(e) {
+                e.preventDefault();
+
+                let isValid = true;
+
+                // Reset previous error highlights
+                $('#checkout-form input, #checkout-form select').removeClass('input-error');
+
+                // Validate required fields
+                $('#checkout-form input:required, #checkout-form select:required').each(function() {
+                    if ($(this).val().trim() === '') {
+                        isValid = false;
+                        $(this).addClass('input-error'); // Highlight error
+                    }
+                });
+
+                if (isValid) {
+                    // Show the payment section
+                    $('.payment-section').slideDown();
+                } else {
+                    alert('Please fill all required fields correctly.');
+                }
+            });
+
+            // Load states on page load
+            $.ajax({
+                url: '/get/states', // Endpoint to fetch states
+                type: 'GET',
+                success: function(response) {
+
+                    $('#billing-state').append('<option value="">Choose State/Province</option>');
+                    $.each(response, function(index, state) {
+                        $('#billing-state').append(
+                            `<option value="${state.id}">${state.state}</option>`
+                        );
+                    });
+                },
+                error: function(xhr) {
+                    alert(xhr.responseText);
+                }
+            });
+
+            // Load cities based on selected state
+            $('#billing-state').on('change', function() {
+                var stateId = $(this).val();
+                $('#billing-town-city').html(
+                    '<option value="">Choose Town/City</option>'); // Reset city dropdown
+
+                if (stateId) {
+                    $.ajax({
+                        url: `/get/cities/${stateId}`, // Correctly pass the stateId as part of the URL
+                        type: 'GET',
+                        success: function(data) {
+                            $('#billing-town-city').empty().append(
+                                '<option selected disabled>Choose Town/City</option>');
+                            $.each(data, function(index, city) {
+                                $('#billing-town-city').append(
+                                    `<option value="${city.id}">${city.city}</option>`
+                                );
+                            });
+                        },
+                    });
+
+                }
+            });
+
+
+        });
+    </script>
 @endsection

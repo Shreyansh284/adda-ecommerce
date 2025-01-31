@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\OrderItem;
 use App\Models\Product;
 use Auth;
 use Illuminate\Http\Request;
@@ -40,6 +41,7 @@ class CartController extends Controller
     }
 
 
+
     public function addToCart(Request $request)
     {
         // Ensure the user is logged in
@@ -49,6 +51,7 @@ class CartController extends Controller
 
         $user = Auth::user();
         $product = Product::find($request->product_id);
+
         if (!$product) {
             return redirect()->back()->with('error', 'Product not found.');
         }
@@ -62,6 +65,18 @@ class CartController extends Controller
             // Update quantity if the product is already in the cart
             $cartItem->quantity += $request->quantity;
             $cartItem->save();
+
+            // Update the corresponding order item quantity
+            $orderItem = OrderItem::where('userId', $user->id)
+                ->where('productId', $product->id)
+                ->where('status', 'pending')
+                ->first();
+
+            if ($orderItem) {
+                $orderItem->quantity += $request->quantity;
+                $orderItem->price += $product->price * $request->quantity;
+                $orderItem->save();
+            }
         } else {
             // Add a new product to the cart
             $cart = new Cart();
@@ -69,6 +84,15 @@ class CartController extends Controller
             $cart->productId = $product->id;
             $cart->quantity = $request->quantity;
             $cart->save();
+
+            // Add a corresponding order item
+            $orderItem = new OrderItem();
+            $orderItem->userId = $user->id;
+            $orderItem->productId = $product->id;
+            $orderItem->quantity = $request->quantity;
+            $orderItem->price = $product->price * $request->quantity;
+            $orderItem->status = 'pending';
+            $orderItem->save();
         }
 
         return redirect()->route('cart.index')->with('success', 'Product added to cart!');

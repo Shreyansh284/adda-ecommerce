@@ -24,6 +24,7 @@
 
     <!--====== App ======-->
     <link rel="stylesheet" href="/user/css/app.color9.css">
+    @yield('css')
 </head>
 
 <body class="config">
@@ -1031,7 +1032,7 @@
         <!--====== App ======-->
         <script src="/user/js/app.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+        @yield('script')
         <!--====== Noscript ======-->
         <noscript>
             <div class="app-setting">

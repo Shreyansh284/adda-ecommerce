@@ -159,4 +159,10 @@ Route::middleware(['user:user'])->group(function () {
     Route::get('/wishlist/remove/{id}', [HomeController::class, 'removeFromWishlist']);
     Route::get('/wishlist/clear', [HomeController::class, 'clearWishlist']);
     Route::post('/logout', [HomeController::class, 'logout'])->name('logout');
+
+    
+    Route::get('/get/states', [HomeController::class, 'getStates'])->name('get.states');
+    Route::get('/get/cities/{state_id}', [HomeController::class, 'getCities'])->name('get.cities');
+    Route::post('/payOnline', [HomeController::class, 'payOnline'])->name('payOnline');
+    Route::get('/payOffline', [HomeController::class, 'payOffline'])->name('payOffline');
 });
