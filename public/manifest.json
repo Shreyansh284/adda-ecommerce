@@ -1,0 +1,17 @@
+{
+    "name": "Adda Jaipur",
+    "short_name": "LPT",
+    "start_url": "/",
+    "background_color": "#000000",
+    "description": "Adda Jaipur - Ecommerce",
+    "display": "fullscreen",
+    "theme_color": "#00000",
+    "icons": [
+        {
+            "src": "./logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
