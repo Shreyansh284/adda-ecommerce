@@ -49,13 +49,7 @@
                                                     <img class="aspect__img"
                                                         src="{{ asset($product->images->first()->image) }}"
                                                         alt=""></a>
-                                                <div class="product-m__quick-look">
-
-                                                    <a class="fas fa-search" data-modal="modal"
-                                                        data-modal-id="#quick-look-{{ $product->id }}"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick Look"></a>
-                                                </div>
-
+                           
                                                 <div class="product-m__content">
                                                     <div class="product-m__category">
 
@@ -177,9 +171,7 @@
                                         </div>
 
                                     </div>
-                                    @include('user.modal.productQuickLookModal', [
-                                        '$product' => $product,
-                                    ])
+                                   
                                 @endforeach
                             </div>
                             {{-- <div class="u-s-p-y-60">
