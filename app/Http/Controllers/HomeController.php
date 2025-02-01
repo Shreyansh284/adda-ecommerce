@@ -223,7 +223,7 @@ class HomeController extends Controller
     public function wishlist()
     {
         // $wishlist = Wishlist::where('userId', Auth::user()->id)->get();
-        $wishlists = Wishlist::with('products.images')->get();
+        $wishlists = Wishlist::with('products.images')->where('userId', Auth::user()->id)->get();
         // dd($wishlists); 
 
         return view('user.wishlist', compact('wishlists'));
@@ -348,6 +348,7 @@ class HomeController extends Controller
 
     public function googleLogin()
     {
+        // dd("fds");
         return Socialite::driver('google')->redirect();
     }
 

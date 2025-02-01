@@ -625,7 +625,7 @@
 
                                     <span class="product-o__name">
 
-                                        <a href="product-detail.html">{{ $product->productName }}</a></span>
+                                        <a href="{{route('product.detail',$product->id)}}">{{ $product->productName }}</a></span>
                                     <div class="product-o__rating gl-rating-style">
                                         @for ($i = 0; $i < 5; $i++)
                                             <!-- Check for fractional star -->

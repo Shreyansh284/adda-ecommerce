@@ -54,11 +54,11 @@
                                                     <div class="product-m__category">
 
                                                         <a
-                                                            href="shop-side-version-2.html">{{ $product->category->categoryName }}</a>
+                                                            href="{{route('product.detail',$product->id)}}">{{ $product->category->categoryName }}</a>
                                                     </div>
                                                     <div class="product-m__name">
 
-                                                        <a href="product-detail.html">{{ $product->productName }}</a>
+                                                        <a href="{{route('product.detail',$product->id)}}">{{ $product->productName }}</a>
                                                     </div>
                                                     <div class="product-m__rating gl-rating-style">
                                                         <div class="pd-detail__rating gl-rating-style">
