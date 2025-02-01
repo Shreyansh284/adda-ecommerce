@@ -299,6 +299,23 @@
                                                     @endforeach
                                                 @endforeach
                                             </div>
+                                            {{-- <div id="reviews-container">
+                                                @foreach ($product->ratings as $rating)
+                                                    <div class="review-o u-s-m-b-15">
+                                                        <div class="review-o__info u-s-m-b-8">
+                                                            <span class="review-o__name">{{ $rating->user->name }}</span>
+                                                            <span class="review-o__date">{{ $rating->created_at }}</span>
+                                                        </div>
+                                                        <div class="review-o__rating gl-rating-style u-s-m-b-8">
+                                                            @for ($i = 0; $i < $rating->rating; $i++)
+                                                                <i class="fas fa-star"></i>
+                                                            @endfor
+                                                            <span>({{ $rating->rating }})</span>
+                                                        </div>
+                                                        <p class="review-o__text">{{ $rating->description }}</p>
+                                                    </div>
+                                                @endforeach
+                                            </div> --}}
                                         </form>
                                     </div>
                                     <div class="u-s-m-b-30">
@@ -648,5 +665,50 @@
         </div>
         <!--====== End - Section Content ======-->
     </div>
+
+    <script>
+        document.getElementById("sort-review").addEventListener("change", function() {
+            let sortValue = this.value === "Sort by: Best Rating" ? "desc" : "asc";
+            let productId = "{{ $product->id }}";
+
+            fetch(`/reviews/${productId}/sort?order=${sortValue}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Sorted Reviews:", data);
+
+                    let reviewsContainer = document.getElementById("reviews-container");
+                    reviewsContainer.innerHTML = "";
+
+                    data.forEach(rating => {
+                        let reviewHtml = `
+                            <div class="review-o u-s-m-b-15">
+                                <div class="review-o__info u-s-m-b-8">
+                                    <span class="review-o__name">${rating.user.name}</span>
+                                    <span class="review-o__date">${rating.created_at}</span>
+                                </div>
+                                <div class="review-o__rating gl-rating-style u-s-m-b-8">
+                                    ${'★'.repeat(Math.floor(rating.rating))} 
+                                    ${rating.rating % 1 !== 0 ? '☆' : ''}
+                                    <span>(${rating.rating})</span>
+                                </div>
+                                <p class="review-o__text">${rating.description}</p>
+                            </div>
+                        `;
+                        reviewsContainer.innerHTML += reviewHtml;
+                    });
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Failed to load reviews. Please try again.");
+                });
+        });
+    </script>
+
+
 
 @endsection

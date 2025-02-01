@@ -160,6 +160,8 @@ Route::middleware(['user:user'])->group(function () {
     Route::post('/logout', [HomeController::class, 'logout'])->name('logout');
 
     Route::post('/submit-review', [RatingController::class, 'store'])->name('review.store');
+    Route::get('/reviews/{productId}/sort', [RatingController::class, 'sortReviews']);
+
 
     Route::get('/get/states', [HomeController::class, 'getStates'])->name('get.states');
     Route::get('/get/cities/{state_id}', [HomeController::class, 'getCities'])->name('get.cities');

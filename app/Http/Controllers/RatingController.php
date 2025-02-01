@@ -63,6 +63,19 @@ class RatingController extends Controller
         return back()->with('success', 'Review submitted successfully!');
     }
 
+    public function sortReviews(Request $request, $productId)
+    {
+        $order = in_array($request->order, ['asc', 'desc']) ? $request->order : 'desc';
+
+        $ratings = Rating::where('productId', $productId)
+            ->with('users') // Load user details
+            ->orderBy('rating', $order)
+            ->get();
+
+        return response()->json($ratings); // ✅ Ensure response is JSON
+    }
+
+
 
     /**
      * Display the specified resource.
