@@ -52,14 +52,13 @@
 
                                                 <div class="product-m__content">
                                                     <div class="product-m__category">
-
                                                         <a
                                                             href="{{ route('product.detail', $product->id) }}">{{ $product->category->categoryName }}</a>
                                                     </div>
                                                     <div class="product-m__name">
-
                                                         <a
-                                                            href="{{ route('product.detail', $product->id) }}">{{ $product->productName }}</a>
+                                                            href="{{ route('product.detail', $product->id) }}">{{ $product->productName }}
+                                                        </a>
                                                     </div>
                                                     <div class="product-m__rating gl-rating-style">
                                                         <div class="pd-detail__rating gl-rating-style">

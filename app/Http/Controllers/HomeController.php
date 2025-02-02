@@ -31,20 +31,23 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = HomeSlider::where('status', 'active')->get();
+        
         $newArrivals = Product::with(['category', 'images', 'ratings'])
         ->where('status', 'active') // Optional: filter active products
-        ->orderBy('created_at', 'desc')
+        ->orderBy('created_at', 'desc')->limit(10)
         ->get();
 
-
-        $trendingProducts = Product::with(['category', 'images', 'ratings'])
-        ->where('status', 'active') // Optional: filter active products
-        ->orderBy('created_at', 'desc')
+        
+        $topDiscount = Product::with(['category', 'images', 'ratings'])
+        ->where('status', 'active')
+        ->where('discount', '>', 10) // Filter products with discount < 15%
+        ->limit(10)
         ->get();
        
+        // dd($topDiscount,$newArrivals);
     
     
-        return view('user.index', compact('sliders', 'newArrivals', 'trendingProducts'));
+        return view('user.index', compact('sliders', 'newArrivals', 'topDiscount'));
     }
     
     public function shop()

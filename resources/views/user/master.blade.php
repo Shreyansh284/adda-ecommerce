@@ -54,12 +54,12 @@
                         <!--====== Dropdown Main plugin ======-->
                         <a class="main-logo" href="{{ URL::to('/') }}">
 
-                            <img src="{{ asset('/logo.png') }}" width="200" height="80" alt=""></a>
+                            <img src="{{ asset('/logo.png') }}" width="130" height="70" alt=""></a>
 
                         <!--====== Dropdown Main plugin ======-->
                         <div class="menu-init" id="navigation2">
 
-                            <button class="btn btn--icon toggle-button toggle-button--secondary fas fa-cog"
+                            <button class="btn btn--icon toggle-button toggle-button--secondary fa fa-sliders"
                                 type="button"></button>
 
                             <!--====== Menu ======-->
@@ -98,10 +98,10 @@
                         <div class="menu-init" id="navigation3">
 
                             <button
-                                class="btn btn--icon toggle-button toggle-button--secondary fas fa-shopping-bag toggle-button-shop"
+                                class="btn btn--icon toggle-button toggle-button--secondary fas fa-user-circle toggle-button-shop"
                                 type="button"></button>
 
-                            <span class="total-item-round">2</span>
+                          
 
                             <!--====== Menu ======-->
                             <div class="ah-lg-mode">
@@ -174,7 +174,6 @@
 
                                         <!--====== Dropdown ======-->
 
-                                        <span class="js-menu-toggle"></span>
                                         <!--====== End - Dropdown ======-->
                                     </li>
                                 </ul>
