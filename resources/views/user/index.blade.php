@@ -106,133 +106,183 @@
                             <div class="filter__category-wrapper">
 
                                 <button class="btn filter__btn filter__btn--style-1 js-checked" type="button"
-                                    data-filter="*">Trending</button>
+                                    data-filter="*" data-target="trending">Trending</button>
                             </div>
                             <div class="filter__category-wrapper">
 
-                                <button class="btn filter__btn filter__btn--style-1" type="button"
-                                    data-filter=".headphone">New Arrivals</button>
+                                <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=""
+                                    data-target="new-arrivals">New Arrivals</button>
                             </div>
 
                         </div>
                         <div class="filter__grid-wrapper u-s-m-t-30">
-                            <div class="row">
-                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item headphone">
-                                    <div class="product-o product-o--hover-on product-o--radius">
-                                        <div class="product-o__wrap">
+                            <div class="row" >
+                                @foreach ($newArrivals as $product)
+                                    <div id="trending"
+                                        class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item filter-content ">
+                                        <div class="product-o product-o--hover-on product-o--radius">
+                                            <div class="product-o__wrap">
 
-                                            <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                href="product-detail.html">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                    href="{{ route('product.detail', $product->id) }}">
 
-                                                <img class="aspect__img" src="images/product/electronic/product2.jpg"
-                                                    alt=""></a>
-                                            <div class="product-o__action-wrap">
-                                                <ul class="product-o__action-list">
-                                                    <li>
+                                                    <img class="aspect__img"
+                                                        src="{{ asset($product->images->first()->image) }}"
+                                                        alt=""></a>
+                                                <div class="product-o__action-wrap">
+                                                    <ul class="product-o__action-list">
 
-                                                        <a data-modal="modal" data-modal-id="#quick-look"
-                                                            data-tooltip="tooltip" data-placement="top"
-                                                            title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                    </li>
-                                                    <li>
+                                                        <li>
+                                                            <form id="cart-form-{{ $product->id }}" class="pd-detail__form"
+                                                                method="POST" action="{{ route('cart.add') }}">
+                                                                @csrf
+                                                                <input type="hidden" name="product_id"
+                                                                    value="{{ $product->id }}">
+                                                                <input type="hidden" name="quantity" value="1">
+                                                            </form>
+                                                            <a href="#"
+                                                                onclick="event.preventDefault(); document.getElementById('cart-form-{{ $product->id }}').submit();">
+                                                                <i class="fas fa-plus-circle"></i>
+                                                            </a>
+                                                        </li>
 
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                            data-tooltip="tooltip" data-placement="top"
-                                                            title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                    </li>
-                                                    <li>
+                                                        <li>
 
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                            title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                    </li>
-                                                    <li>
+                                                            <a href="{{ URL::to('/') }}/wishlist/add/{{ $product->id }}"><i
+                                                                    class="fas fa-heart"></i></a>
+                                                        </li>
 
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                            title="Email me When the price drops"><i
-                                                                class="fas fa-envelope"></i></a>
-                                                    </li>
-                                                </ul>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <span class="product-o__category">
+                                            <span class="product-o__category">
 
-                                            <a href="shop-side-version-2.html">Electronics</a></span>
+                                                <a
+                                                    href="{{ route('product.detail', $product->id) }}">{{ $product->category->categoryName }}</a></span>
 
-                                        <span class="product-o__name">
+                                            <span class="product-o__name">
 
-                                            <a href="product-detail.html">Red Wireless Headphone</a></span>
-                                        <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                                <a
+                                                    href="{{ route('product.detail', $product->id) }}">{{ $product->productName }}</a></span>
+                                            <div class="product-o__rating gl-rating-style"><i>
+                                                    @for ($i = 0; $i < 5; $i++)
+                                                        <!-- Check for fractional star -->
+                                                        @if ($i < floor($product->ratings->avg('rating')))
+                                                            <i class="fas fa-star"></i>
+                                                        @elseif (
+                                                            $i == floor($product->ratings->avg('rating')) &&
+                                                                $product->ratings->avg('rating') - floor($product->ratings->avg('rating')) >= 0.5)
+                                                            <i class="fas fa-star-half-alt"></i>
+                                                        @else
+                                                            <i class="far fa-star"></i>
+                                                        @endif
+                                                    @endfor
 
-                                            <span class="product-o__review">(23)</span>
-                                        </div>
-
-                                        <span class="product-o__price">$125.00
-
-                                            <span class="product-o__discount">$160.00</span></span>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item headphone">
-                                    <div class="product-o product-o--hover-on product-o--radius">
-                                        <div class="product-o__wrap">
-
-                                            <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                href="product-detail.html">
-
-                                                <img class="aspect__img" src="images/product/electronic/product3.jpg"
-                                                    alt=""></a>
-                                            <div class="product-o__action-wrap">
-                                                <ul class="product-o__action-list">
-                                                    <li>
-
-                                                        <a data-modal="modal" data-modal-id="#quick-look"
-                                                            data-tooltip="tooltip" data-placement="top"
-                                                            title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                    </li>
-                                                    <li>
-
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                            data-tooltip="tooltip" data-placement="top"
-                                                            title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                    </li>
-                                                    <li>
-
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                            title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                    </li>
-                                                    <li>
-
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                            title="Email me When the price drops"><i
-                                                                class="fas fa-envelope"></i></a>
-                                                    </li>
-                                                </ul>
+                                                    <span class="product-o__review">{{ $product->ratings->count() }}
+                                                        Reviews</span>
                                             </div>
+
+                                            <span
+                                                class="product-o__price">₹{{ number_format($product->price - ($product->price * $product->discount) / 100, 2) }}
+
+                                                @if ($product->discount)
+                                                    <span class="product-m__price">
+                                                        ({{ $product->discount }}% OFF)
+                                                    </span>
+                                                    <del
+                                                        class="pd-detail__del">₹{{ number_format($product->price, 2) }}</del>
+                                                @endif
+                                            </span>
                                         </div>
-
-                                        <span class="product-o__category">
-
-                                            <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                        <span class="product-o__name">
-
-                                            <a href="product-detail.html">Yellow Wireless Headphone</a></span>
-                                        <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
-                                                class="far fa-star"></i><i class="far fa-star"></i>
-
-                                            <span class="product-o__review">(23)</span>
-                                        </div>
-
-                                        <span class="product-o__price">$125.00
-
-                                            <span class="product-o__discount">$160.00</span></span>
                                     </div>
-                                </div>
-
+                                @endforeach
                             </div>
+                            <div class="row"  >
+                                @foreach ($newArrivals as $product)
+                                    <div id="new-arrivals" class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item filter-content "
+                                        style="display: none">
+                                        <div class="product-o product-o--hover-on product-o--radius">
+                                            <div class="product-o__wrap">
+
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                    href="{{ route('product.detail', $product->id) }}">
+
+                                                    <img class="aspect__img"
+                                                        src="{{ asset($product->images->first()->image) }}"
+                                                        alt=""></a>
+                                                <div class="product-o__action-wrap">
+                                                    <ul class="product-o__action-list">
+
+                                                        <li>
+                                                            <form id="cart-form-{{ $product->id }}"
+                                                                class="pd-detail__form" method="POST"
+                                                                action="{{ route('cart.add') }}">
+                                                                @csrf
+                                                                <input type="hidden" name="product_id"
+                                                                    value="{{ $product->id }}">
+                                                                <input type="hidden" name="quantity" value="1">
+                                                            </form>
+                                                            <a href="#"
+                                                                onclick="event.preventDefault(); document.getElementById('cart-form-{{ $product->id }}').submit();">
+                                                                <i class="fas fa-plus-circle"></i>
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+
+                                                            <a
+                                                                href="{{ URL::to('/') }}/wishlist/add/{{ $product->id }}"><i
+                                                                    class="fas fa-heart"></i></a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <span class="product-o__category">
+
+                                                <a
+                                                    href="{{ route('product.detail', $product->id) }}">{{ $product->category->categoryName }}</a></span>
+
+                                            <span class="product-o__name">
+
+                                                <a
+                                                    href="{{ route('product.detail', $product->id) }}">{{ $product->productName }}</a></span>
+                                            <div class="product-o__rating gl-rating-style"><i>
+                                                    @for ($i = 0; $i < 5; $i++)
+                                                        <!-- Check for fractional star -->
+                                                        @if ($i < floor($product->ratings->avg('rating')))
+                                                            <i class="fas fa-star"></i>
+                                                        @elseif (
+                                                            $i == floor($product->ratings->avg('rating')) &&
+                                                                $product->ratings->avg('rating') - floor($product->ratings->avg('rating')) >= 0.5)
+                                                            <i class="fas fa-star-half-alt"></i>
+                                                        @else
+                                                            <i class="far fa-star"></i>
+                                                        @endif
+                                                    @endfor
+
+                                                    <span class="product-o__review">{{ $product->ratings->count() }}
+                                                        Reviews</span>
+                                            </div>
+
+                                            <span
+                                                class="product-o__price">₹{{ number_format($product->price - ($product->price * $product->discount) / 100, 2) }}
+
+                                                @if ($product->discount)
+                                                    <span class="product-m__price">
+                                                        ({{ $product->discount }}% OFF)
+                                                    </span>
+                                                    <del
+                                                        class="pd-detail__del">₹{{ number_format($product->price, 2) }}</del>
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
                         </div>
                     </div>
 
@@ -242,4 +292,23 @@
         <!--====== End - Section Content ======-->
     </div>
     <!--====== End - Section 2 ======-->
+@endsection
+
+
+@section('script')
+    <script>
+        document.querySelectorAll('.filter__btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                alert(targetId);
+                // Hide all sections
+                document.querySelectorAll('.filter-content').forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                // Show the selected section
+                document.getElementById(targetId).style.display = 'block';
+            });
+        });
+    </script>
 @endsection

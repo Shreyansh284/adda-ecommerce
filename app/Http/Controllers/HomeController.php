@@ -31,9 +31,22 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = HomeSlider::where('status', 'active')->get();
-        // $product
-        return view('user.index', compact('sliders'));
+        $newArrivals = Product::with(['category', 'images', 'ratings'])
+        ->where('status', 'active') // Optional: filter active products
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+
+        $trendingProducts = Product::with(['category', 'images', 'ratings'])
+        ->where('status', 'active') // Optional: filter active products
+        ->orderBy('created_at', 'desc')
+        ->get();
+       
+    
+    
+        return view('user.index', compact('sliders', 'newArrivals', 'trendingProducts'));
     }
+    
     public function shop()
     {
         $products = Product::with(['category', 'images', 'ratings'])

@@ -44,21 +44,22 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{route('product.detail',$product->id)}}">
+                                                    href="{{ route('product.detail', $product->id) }}">
 
                                                     <img class="aspect__img"
                                                         src="{{ asset($product->images->first()->image) }}"
                                                         alt=""></a>
-                           
+
                                                 <div class="product-m__content">
                                                     <div class="product-m__category">
 
                                                         <a
-                                                            href="{{route('product.detail',$product->id)}}">{{ $product->category->categoryName }}</a>
+                                                            href="{{ route('product.detail', $product->id) }}">{{ $product->category->categoryName }}</a>
                                                     </div>
                                                     <div class="product-m__name">
 
-                                                        <a href="{{route('product.detail',$product->id)}}">{{ $product->productName }}</a>
+                                                        <a
+                                                            href="{{ route('product.detail', $product->id) }}">{{ $product->productName }}</a>
                                                     </div>
                                                     <div class="product-m__rating gl-rating-style">
                                                         <div class="pd-detail__rating gl-rating-style">
@@ -66,57 +67,62 @@
                                                                 <!-- Check for fractional star -->
                                                                 @if ($i < floor($product->ratings->avg('rating')))
                                                                     <i class="fas fa-star"></i>
-                                                                @elseif ($i == floor($product->ratings->avg('rating')) && $product->ratings->avg('rating') - floor($product->ratings->avg('rating')) >= 0.5)
+                                                                @elseif (
+                                                                    $i == floor($product->ratings->avg('rating')) &&
+                                                                        $product->ratings->avg('rating') - floor($product->ratings->avg('rating')) >= 0.5)
                                                                     <i class="fas fa-star-half-alt"></i>
                                                                 @else
                                                                     <i class="far fa-star"></i>
                                                                 @endif
                                                             @endfor
                                                             <span class="pd-detail__review u-s-m-l-4">
-                                                                <a data-click-scroll="#view-review">{{ $product->ratings->count() }} Reviews</a>
+                                                                <a data-click-scroll="#view-review">{{ $product->ratings->count() }}
+                                                                    Reviews</a>
                                                             </span>
                                                         </div>
-                                                   
+
                                                     </div>
                                                     <div class="pd-detail__inline">
-                                                       
-                                                        <span class="product-m__price">₹{{ number_format($product->price - ($product->price * $product->discount / 100), 2) }}</span>
-                                                        
-                                                        @if($product->discount)
+
+                                                        <span
+                                                            class="product-m__price">₹{{ number_format($product->price - ($product->price * $product->discount) / 100, 2) }}</span>
+
+                                                        @if ($product->discount)
                                                             <span class="product-m__price">
                                                                 ({{ $product->discount }}% OFF)
                                                             </span>
-                                                            <del class="pd-detail__del">₹{{ number_format($product->price, 2) }}</del>
+                                                            <del
+                                                                class="pd-detail__del">₹{{ number_format($product->price, 2) }}</del>
                                                         @endif
                                                     </div>
-                                                    
+
                                                     <div class="product-m__hover">
                                                         <div class="product-m__preview-description">
 
                                                             <span>{{ Str::limit($product->description, 100) }}</span>
                                                         </div>
                                                         @php
-                                                        $isInWishlist = \App\Models\Wishlist::where(
-                                                            'userId',
-                                                            auth()->id(),
-                                                        )
-                                                            ->where('productId', $product->id)
-                                                            ->first();
-                                                    @endphp
-                                        
+                                                            $isInWishlist = \App\Models\Wishlist::where(
+                                                                'userId',
+                                                                auth()->id(),
+                                                            )
+                                                                ->where('productId', $product->id)
+                                                                ->first();
+                                                        @endphp
+
                                                         <div class="product-m__wishlist">
                                                             @if ($isInWishlist != null)
-                                                            <a class="fas fa-heart"
-                                                                href="{{ URL::to('/') }}/wishlist/remove/{{ $isInWishlist->id }}"
-                                                                data-tooltip="tooltip" data-placement="top"
-                                                                title="Added to Wishlist"
-                                                                style="color: rgb(189, 17, 57);"></a>
-                                                        @else
-                                                            <a class="far fa-heart"
-                                                                href="{{ URL::to('/') }}/wishlist/add/{{ $product->id }}"
-                                                                data-tooltip="tooltip" data-placement="top"
-                                                                title="Add to Wishlist"></a>
-                                                        @endif
+                                                                <a class="fas fa-heart"
+                                                                    href="{{ URL::to('/') }}/wishlist/remove/{{ $isInWishlist->id }}"
+                                                                    data-tooltip="tooltip" data-placement="top"
+                                                                    title="Added to Wishlist"
+                                                                    style="color: rgb(189, 17, 57);"></a>
+                                                            @else
+                                                                <a class="far fa-heart"
+                                                                    href="{{ URL::to('/') }}/wishlist/add/{{ $product->id }}"
+                                                                    data-tooltip="tooltip" data-placement="top"
+                                                                    title="Add to Wishlist"></a>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -171,7 +177,6 @@
                                         </div>
 
                                     </div>
-                                   
                                 @endforeach
                             </div>
                             {{-- <div class="u-s-p-y-60">

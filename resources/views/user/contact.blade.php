@@ -11,10 +11,10 @@
                                 <ul class="breadcrumb__list">
                                     <li class="has-separator">
 
-                                        <a href="index.html">Home</a></li>
+                                        <a href="{{ URL::to('/') }}">Home</a></li>
                                     <li class="is-marked">
 
-                                        <a href="contact.html">Contact</a></li>
+                                        <a href="{{ URL::to('/') }}/contact">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
